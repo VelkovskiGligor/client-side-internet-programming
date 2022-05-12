@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Direct Selection</title>
+    <script type="text/javascript" src="../jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.css">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+                   $("#delete").click(function () {
+
+                       $(".check:checked").parent().parent().empty()
+
+                   });
+                   $("#restore").click(function () {
+                       $("table").html(" <tr id=\"0\"> <td><input type=\"checkbox\" value=\"0\" class=\"check\"></td><td>Sender\n" +
+                           "        1</td><td>Subject 2</td> </tr>\n" +
+                           "    <tr id=\"1\"> <td><input type=\"checkbox\" value=\"1\" class=\"check\"></td><td>Sender\n" +
+                           "        2</td><td>Subject 2</td> </tr>\n" +
+                           "    <tr id=\"2\"> <td><input type=\"checkbox\" value=\"2\" class=\"check\"></td><td>Sender\n" +
+                           "        3</td><td>Subject 3</td> </tr>\n" +
+                           "    <tr id=\"3\"> <td><input type=\"checkbox\" value=\"3\" class=\"check\"></td><td>Sender\n" +
+                           "        4</td><td>Subject 4</td> </tr>\n" +
+                           "    <tr id=\"4\"> <td><input type=\"checkbox\" value=\"4\" class=\"check\"></td><td>Sender\n" +
+                           "        5</td><td>Subject 5</td> </tr>\n" +
+                           "    <tr id=\"5\"> <td><input type=\"checkbox\" value=\"5\" class=\"check\"></td><td>Sender\n" +
+                           "        6</td><td>Subject 6</td> </tr>\n" +
+                           "    <tr id=\"6\"> <td><input type=\"checkbox\" value=\"6\" class=\"check\"></td><td>Sender\n" +
+                           "        7</td><td>Subject 7</td> </tr>")
+                   });
+        });
+    </script>
+</head>
+<body>
+<input type="submit" value="Delete" id="delete">
+<input type="submit" value="Restore" id="restore">
+<table cellspacing="0">
+    <tr id="0"> <td><input type="checkbox" value="0" class="check"></td><td>Sender
+        1</td><td>Subject 2</td> </tr>
+    <tr id="1"> <td><input type="checkbox" value="1" class="check"></td><td>Sender
+        2</td><td>Subject 2</td> </tr>
+    <tr id="2"> <td><input type="checkbox" value="2" class="check"></td><td>Sender
+        3</td><td>Subject 3</td> </tr>
+    <tr id="3"> <td><input type="checkbox" value="3" class="check"></td><td>Sender
+        4</td><td>Subject 4</td> </tr>
+    <tr id="4"> <td><input type="checkbox" value="4" class="check"></td><td>Sender
+        5</td><td>Subject 5</td> </tr>
+    <tr id="5"> <td><input type="checkbox" value="5" class="check"></td><td>Sender
+        6</td><td>Subject 6</td> </tr>
+    <tr id="6"> <td><input type="checkbox" value="6" class="check"></td><td>Sender
+        7</td><td>Subject 7</td> </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" language="JavaScript1.5">
+        confirm("are you ready?")
+
+
+        function promeni() {
+        var input=document.getElementById("tekst");
+            if (input.value == ""){
+                var tekst =prompt("VNESI TEKST");
+                input.value=tekst;
+            }
+            else {
+                alert("Uspesno!")
+
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+<span>
+    Vnesi tekst<input type="text" id="tekst">
+</span>
+<span>
+    <input type="submit" onclick="promeni()">
+</span>
+</body>
+</html>

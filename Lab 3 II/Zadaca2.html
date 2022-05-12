@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #glaven{
+            width: 1000px;
+            height: 500px;
+            padding: 10px 10px 10px 10px;
+            border: 2px red dashed;
+        }
+        .podatoci{
+            float: left;
+            height: 300px;
+            margin-left: 30px;
+            background-color: lightskyblue;
+            width: 200px;
+            padding-left: 20px;
+        }
+        .podatoci ul li{
+            font-size: 20px;
+            cursor: pointer;
+            list-style-type:square;
+        }
+        .podatoci ul li:hover{
+            color: blue;
+        }
+        h2{
+            color: #eeeeee;
+        }
+        #prikaz{
+            margin-top: 330px;
+            background-color: lightgreen;
+            height: 130px;
+            width: 100%;
+            font-size: 30px;
+            padding: 20px 20px 20px;
+        }
+
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("li").click(function () {
+                var title=$(this).attr("title");
+                $("#prikaz").text(title);
+
+            });
+            $("#accordation").accordion({
+                collapse:true,
+                active:true,
+            });
+            $("#accordation .ui-accordion-header").click(function () {
+                $(this).next().slideToggle();
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="glaven">
+    <div class="podatoci">
+        <h2>Medicina</h2>
+        <ul>
+            <li title="MedIm-podatoci">MedIm</li>
+            <li title="MedIA-podatoci">MedIA</li>
+            <li title="FINKI-podatoci">FINKI-Med</li>
+        </ul>
+    </div>
+    <div class="podatoci">
+        <h2>Obrazovanie</h2>
+        <ul>
+            <li title="FINKI-Edu-podatoci">FINKI-Edu</li>
+            <li title="Edu-podatoci"> Edu-Buddy</li>
+            <li title="LE-podatoci">FINKI-LE</li>
+            <li title="Math-podatoci">FINKI-Math</li>
+        </ul>
+
+    </div>
+    <div class="podatoci">
+        <h2>Smetkovodstvo</h2>
+        <ul>
+            <li title="ETax-podatoci">eTax</li>
+            <li title="Finki-Tax-podatoci">FINKI-Tax</li>
+            <li title="ALL-Tax-podatoci"> Tax-All</li>
+            <li title="mySalary-podatoci">mySalary</li>
+        </ul>
+
+    </div>
+    <div class="podatoci">
+        <h2>Igri</h2>
+        <ul>
+            <li>FINKI-game</li>
+            <li>Grelima</li>
+            <li>Edaolith</li>
+            <li>Foessa</li>
+            <li>Jeroen</li>
+        </ul>
+
+    </div>
+
+<div id="prikaz">
+</div>
+</div>
+<div id="accordation">
+    <h1 class="ui-accordion-header">Тим</h1>
+    <div>
+        <ul>
+            <li>Алберт Ајнштајн</li>
+            <li>Ален Тјуринг</li>
+            <li>Архимед</li>
+        </ul>
+    </div>
+    <h1 class="ui-accordion-header">Претставништва</h1>
+    <div>
+        <ul>
+            <li>Скопје</li>
+            <li>Прилеп</li>
+            <li>Велес</li>
+        </ul>
+    </div>
+    <h1 class="ui-accordion-header">Контакт</h1>
+    <div>
+        <ul>
+            <li>Ул. Есенска 24/5 1000 Скопје</li>
+            <li>+38921234567</li>
+            <li>finkiit@iaispit.com</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

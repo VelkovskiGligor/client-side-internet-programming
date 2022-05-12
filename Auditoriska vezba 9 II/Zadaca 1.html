@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            padding: 10px;
+            font-size: 20px;
+        }
+        .a{
+            display: inline-block;
+            width: 300px;
+            height: 300px;
+            float: left;
+        }
+        .a:first-child{
+            border-right: 1px solid lightgray;
+        }
+        ul{
+            list-style-type: none;
+        }
+        ul li{
+            height: 20px;
+            cursor: pointer;
+        }
+        #h{
+            border: 1px solid #e78f08;
+            padding: 10px;
+            margin-top: 2px;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#secound").sortable();
+            $("#first").sortable({
+                connectWith:"#secound"
+            });
+            $("#first").sortable();
+            $("#secound").sortable({
+                connectWith:"#first"
+            });
+            $("li").tooltip({
+                items:"[title]",
+                content:function () {
+                    var el=$(this);
+                    if(el.is("[title]")){
+                        return el.attr("title")
+                    }
+                }
+            });
+            var dial=$("#dialog").dialog({
+               autoOpen:false,
+                
+               buttons:[{
+                   text:"Add",
+                   click:function () {
+                       var name=$("#name").val();
+                       var index=$("#index").val();
+                       if(name!="" && index!=""){
+                           $("#first").append("<li>"+name+" "+" "+index+"</li>");
+                       }
+                       $("#name").val("");
+                       $("#index").val("");
+                       dial.dialog("close");
+                   }
+               },{
+                   text:"Cancel",
+                   click:function () {
+                      $("#name").val("");
+                      $("#index").val("");
+                       dial.dialog("close");
+                   }
+               }]
+            });
+            var diall=$("#dialogg").dialog({
+                autoOpen:false,
+                modal:true,
+                buttons: [{
+                    text:"Add",
+                    click:function () {
+                        var point=$("#points").val();
+                        $("#secound li").each(function () {
+                            var title=$(this).attr("title");
+                            if(title==null){
+                                $(this).attr("title",""+point);
+                            }
+                        });
+
+                        diall.dialog("close");
+                    }
+                }]
+            });
+            $(".ui-sortable-handle").mousedown(function () {
+                var title=$(this).attr("title");
+                console.log(title);
+                if(title == null){
+                    diall.dialog("open");
+                }
+
+            });
+
+            $("#new").click(function () {
+                dial.dialog("open");
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="a">
+    <strong>Enrolled students</strong>
+    <ul id="first">
+        <li>Petre Petrevski </li>
+        <li>Ace Acevski 111114</li>
+        <li>Mite Mitreski 111115</li>
+    </ul>
+    <input type="submit" id="new" value="Add a new Student">
+</div>
+<div class="a" >
+    <strong>Students that took the test</strong>
+    <ul id="secound">
+        <li title="90"> Nikola Nikolovski 111111</li>
+        <li title="80">Simona Simonovska 111112</li>
+    </ul>
+</div>
+    <div id="dialog" title="Add a new student">
+        All fields are required
+        <div id="h">
+        Name:<br>
+        <input id="name" type="text" style="width: 200px"><br>
+        Index:<br>
+        <input id="index" type="text" style="width: 200px">
+        </div>
+    </div>
+<div id="dialogg" title="Enter points">
+    All fields are required
+    <div id="z">
+        Points from the test:<br>
+        <input id="points" type="text" style="width: 200px"><br>
+    </div>
+</div>
+</body>
+</html>

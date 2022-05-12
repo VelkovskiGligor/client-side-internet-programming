@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <style>
+        .ui-selectable ui-widget-content{
+            background: white;
+            color: black;
+        }
+        .ui-selectable .ui-selected{
+            background: #e78f08;
+            color: white;
+        }
+        ul li{
+            list-style-type: none;
+            padding: 10px;
+            width: 300px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var apikey = "a6592a8d";
+           $(".ui-selectable").selectable();
+           function getmovie(title){
+               $.ajax({
+                   url: "http://omdbapi.com/?t=" + title + "&apikey=" + apikey,
+                   dataType:"jsonp",
+                   success:function (data) {
+                       var title=data.Title;
+                       var raiting=data.imdbRating;
+                       var imdbID=data.imdbID;
+                       var director=data.Director;
+                       var actors = data.Actors;
+                       var img = data.Poster;
+                       $("#title").text(title);
+                       $("#imd").text(imdbID);
+                       $("#rating").text(raiting);
+                       $("#director").text(director);
+                       $("#actor").text(actors);
+                       $("#imgPoster").attr("src",img)
+                   }
+               });
+           }
+
+
+            $(".ui-selectable li").mousedown(function () {
+                getmovie($(this).attr("title"));
+            })
+        });
+    </script>
+</head>
+<body>
+<input type="submit" id="kopce" value="Add movie">
+<ul class="ui-selectable">
+    <li class="ui-widget-content" title="Oblivion">Oblivion</li>
+    <li class="ui-widget-content" title="Elysium">Elysium</li>
+    <li class="ui-widget-content" title="Avatar">Avatar</li>
+    <li class="ui-widget-content" title="Inception">Inception</li>
+</ul>
+<div id="info">
+    Title : <span id="title"></span><br>
+    ImdbID : <span id="imd"></span><br>
+    Rating : <span id="rating"></span><br>
+    Director : <span id="director"></span><br>
+    Actors : <span id="actor"></span><br>
+    <img id="imgPoster" src=""/>
+</div>
+
+</body>
+</html>

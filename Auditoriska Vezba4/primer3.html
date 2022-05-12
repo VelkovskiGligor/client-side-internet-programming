@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primer3</title>
+    <style type="text/css">
+        div input{
+            margin-bottom: 10px;
+        }
+        .uklucen{
+            display: inline-block;
+        }
+        .izgasen{
+            display: none;
+
+
+        }
+        </style>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+    <script>
+    $(document).ready(function () {
+        index=0;
+
+        $("#Oblivion").click(function () {
+            index=1;
+            $(this).css("background-color","orange");
+            $(this).css("color","white");
+            $("#prv").hide();
+            $("#vtor").show();
+            smeni(index);
+
+
+        });
+        $("#EndersGame").click(function () {
+            index=2;
+            $(this).css("background-color","orange");
+            $(this).css("color","white");
+            $("#naslov");
+            $("#prv").hide();
+            $("#vtor").show();
+            smeni(index);
+        });
+        $("#Elysium").click(function () {
+            index=3;
+            $(this).css("background-color","orange");
+            $(this).css("color","white");
+            $("#prv").hide();
+            $("#vtor").show();
+            smeni(index);
+        });
+        $("#EdgeofTomorrow").click(function () {
+            index=4;
+            $(this).css("background-color","orange");
+            $(this).css("color","white");
+            $("#prv").hide();
+            $("#vtor").show();
+            smeni(index);
+        });
+        $("#top").click(function () {
+
+            $("#prv").show();
+            $("#vtor").hide();
+            $(".klasa").css("background-color","#eeeeee");
+            $(".klasa").css("color","black");
+            $("#prv input").eq(index-1).css("background-color","orange");
+            $("#prv input").eq(index-1).css("color","white");
+        });
+        $("#prev").click(function () {
+           if(index!=1){
+               index--;
+               smeni(index);
+           }
+        });
+        $("#next").click(function () {
+           if(index!=4){
+               index++;
+               smeni(index);
+           }
+        });
+
+        function smeni(i) {
+            if(i==1){
+                document.getElementById("naslov").innerText="Oblivion";
+                document.getElementById("tekst").innerText="A veteran assigned to extract Earth's remaining resources begins to question what he knows about his mission and himself.";
+            }
+            else if(i==2){
+                document.getElementById("naslov").innerText="Ender's Game";
+                document.getElementById("tekst").innerText="Young Ender Wiggin is recruited by the International Military to lead the fight against the Formics, a genocidal alien race which nearly annihilated the human race in a previous invasion.";
+
+            }
+            else if(i==3){
+                document.getElementById("naslov").innerText="Elysium";
+                document.getElementById("tekst").innerText="In the year 2154, the very wealthy live on a man-made space station while the rest of the population resides on a ruined Earth. A man takes on a mission that could bring equality to the polarized worlds.";
+
+            }
+            else if(i==4){
+                document.getElementById("naslov").innerText="Edge of Tomorrow";
+                document.getElementById("tekst").innerText="A military officer is brought into an alien war against an extraterrestrial enemy who can reset the day and know the future. When this officer is enabled with the same power, he teams up with a Special Forces warrior to try and end the war.";
+
+            }
+        }
+        $()
+    });
+    </script>
+
+
+</head>
+<body>
+<div id="prv" class="uklucen">
+    <input type="submit" value="Oblivion" class="klasa" id="Oblivion" style="width: 300px;height: 35px;font-size:30px"><br>
+    <input type="submit" value="Enders Game" class="klasa" id="EndersGame" style="width: 300px;height: 35px;font-size:30px"><br>
+    <input type="submit" value="Elysium" class="klasa" id="Elysium" style="width: 300px;height: 35px;font-size:30px"><br>
+    <input type="submit" value="Edge of Tomorrow" class="klasa" id="EdgeofTomorrow" style="width: 300px;height: 35px;font-size:30px"><br>
+</div>
+<div id="vtor" class="izgasen">
+<input type="submit" id="prev" value="prev" style="width: 100px">
+    <input type="submit" id="top" value="top" style="width: 100px">
+    <input type="submit" id="next" value="next" style="width: 100px"><br>
+
+        Title:<br>
+    <div  disabled style="width: 312px;height: 35px;background-color: lightgray;font-size: 30px" id="naslov"> <p></p></div><br>
+        Desc:<br>
+    <div  disabled style="width: 321px;background-color: lightgray;font-size: 30px" id="tekst"><p></p></div><br>
+
+
+</div>
+
+</body>
+</html>

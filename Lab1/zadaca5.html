@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca5</title>
+    <script type="text/javascript" language="JavaScript1.5" src="jquery-3.4.1.js"></script>
+    <style type="text/css">
+        input{
+            margin: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#zgolemi").click(function () {
+                $("#tekst").animate({
+                    fontSize:"30px"
+                },1000)
+            });
+            $("#pocetak").click(function () {
+                $("#tekst").animate({
+                    fontSize:"20px"
+                },1000)
+            });
+            $("#namali").click(function () {
+                $("#tekst").animate({
+                    fontSize:"15px"
+                },1000)
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div style="background-color: #1c94c4;width:250px">
+    Големина на фонд:<br>
+    <input type="submit" value="Почетна" id="pocetak">
+    <input type="submit" value="Зголеми" id="zgolemi">
+    <input type="submit" value="Намали" id="namali">
+</div>
+<div id="tekst">
+За решавање на задачата треба да се користи JQuery (за додавање на класа за промена на<br>
+позадината на колоните на непарна позиција и промена на бојата и дебелината на фонтот на<br>
+редиците на непарна позиција).<br>
+</div>
+</body>
+</html>

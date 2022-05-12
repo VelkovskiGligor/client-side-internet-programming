@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #forma label {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        #forma{
+            width: 400px;
+            padding: 20px;
+            border: 2px solid lightskyblue;
+        }
+        #forma span{
+            display: inline-block;
+            width: 140px;
+        }
+        ul{
+            list-style-type: none;
+            font-size: 20px;
+        }
+        .selectable  .ui-widget-content{
+            background-color: white;
+            color: black;
+        }
+        .selectable .ui-selected{
+            background: #eb8f00;
+            color: white;
+        }
+
+
+
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#detali").hide();
+            var index=-1;
+            var lista=[];
+            $("#forma").tooltip({
+                items:"[title]",
+                content:function () {
+                    var item=$(this);
+                    if(item.is("[title]")){
+                        return item.attr("title")
+                    }
+                }
+            });
+            $("#data").datepicker({
+                showAnim:"fold",
+                duration:"slow",
+                changeYear:true,
+                changeMonth:true,
+                dateFormat:"D M yy"
+            });
+            $("#store").click(function () {
+                var film=$("#film").val();
+                $("#film").val("");
+                var  datum=$("#data").val();
+                $("#data").val("");
+                var ime=$("#reziser").val();
+                $("#reziser").val("");
+                var prezime=$("#prezime").val();
+                $("#prezime").val("");
+                var  opis=$("#opis").val();
+                $("#opis").val("");
+               var obj={
+                   film:""+film,
+                   datum:""+datum,
+                   ime:""+ime,
+                   prezime:""+prezime,
+                   opis:""+opis
+               };
+                lista.push(obj);
+                $(".selectable").append("<li class='ui-widget-content'>"+lista[lista.length-1].film+"</li>")
+                $("li").mousedown(function (){
+                    $("#glavan").hide();
+                    $("#detali").show();
+                   var tit= $(this).text();
+                    for(var i=0;i<lista.length;i++){
+                        if(lista[i].film == tit){
+                            index=i;
+                        }
+                    }
+                    $("#name").text(lista[index].film);
+                    $("#datum").text(lista[index].datum);
+                    $("#resiser").text(lista[index].ime);
+                    $("#surname").text(lista[index].prezime);
+                    $("#sodrzina").text(lista[index].opis);
+
+
+                });
+            });
+            $("#back").click(function () {
+                if(index!=0){
+                    index--;
+                    $("#name").text(lista[index].film);
+                    $("#datum").text(lista[index].datum);
+                    $("#resiser").text(lista[index].ime);
+                    $("#surname").text(lista[index].prezime);
+                    $("#sodrzina").text(lista[index].opis);
+                }
+
+            });
+            $("#next").click(function () {
+                if(index<lista.length-1){
+                    index++;
+                    $("#name").text(lista[index].film);
+                    $("#datum").text(lista[index].datum);
+                    $("#resiser").text(lista[index].ime);
+                    $("#surname").text(lista[index].prezime);
+                    $("#sodrzina").text(lista[index].opis);
+                }
+
+            });
+            $("#top").click(function () {
+                $("#glavan").show();
+                $("#detali").hide();
+
+            });
+
+                $(".selectable").selectable();
+        })
+    </script>
+</head>
+<body>
+<div id="glavan">
+    <div id="forma">
+        <label><span>Ime na filmot:</span><input type="text" id="film" title="Vnesete go imeto na filmot"></label><br>
+        <label><span>Datum:</span><input type="text" placeholder="click to pick a data" id="data"></label><br>
+        <label><span>Ime na reziserot:</span><input type="text" id="reziser"  title="Vnesete go imeto na reziserot"></label><br>
+        <label><span>Prezime na reziserot:</span><input type="text" id="prezime"  title="Vnesete go prezimeto na reziserot"></label><br>
+        <label><span>Opis na filmot:</span><textarea id="opis" title="Vnesete opis za filmot"></textarea></label>
+        <br> <input type="submit" value="Store" id="store" style="margin-left: 220px;height: 23px;width: 100px">
+    </div>
+    <ul class="selectable" style="width: 400px"></ul>
+
+
+</div>
+<div id="detali" style="border: 2px lightskyblue solid">
+    <input type="submit" value="Back" id="back"><input type="submit" value="Top" id="top"><input type="submit" value="Next" id="next"><br>
+    <span><strong>Ime na filmot:</strong></span><p id="name"></p>
+    <span><strong>Datum:</strong></span><p id="datum"></p>
+    <span><strong>Ime na reziserot:</strong></span><p id="resiser"></p>
+    <span><strong>Prezime na reziserot:</strong></span><p id="surname"></p>
+    <span><strong>Opis na filmot:</strong></span><p id="sodrzina"></p>
+</div>
+
+</body>
+</html>

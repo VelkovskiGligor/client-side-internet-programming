@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tooltip</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style type="text/css">
+        #form{
+            margin: 10px;
+            background-color: lightgray;
+            width: 400px;
+            height: 250px;
+            padding: 10px;
+        }
+        #form div{
+            margin: 20px;
+        }
+        label{
+            width: 67px;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            $(document).tooltip({
+                items:"img,[title],[data-geo]",
+                content:function () {
+                    var element=$(this);
+                    if(element.is("img")){  //ako e img
+                        return  element.attr("alt")
+
+                    }
+                    if(element.is("[title]")){  //ako ga ima atrigutot title
+                        return element.attr("title")
+
+                    }
+                    if(element.is("[data-geo]")){ //ako ga ima atributot dada-geo
+                        var text=element.text();
+                        return "<img class='map' alt='" + text + "' src='st-stephens.jpg'>";
+                    }
+
+                }
+
+            })
+        });
+
+    </script>
+
+</head>
+<body>
+<p>Please provide your information to see the St. Stephen's Cathedral</p>
+<div id="form">
+    <div>
+
+          <label>First name</label><input type="text" id="name" name="firstname" title="Enter your first name">
+    </div>
+    <div>
+            <label>Last name</label><input type="text" id="lastname" name="lastname" title="Enter your last name">
+    </div>
+    <div>
+            <label>E-Mail</label><input type="text" id="email" name="address" title="Enter your email"><br>
+    </div>
+
+    <h2>St. Stephen's Cathedral</h2>
+    <h3><a href="http://maps.google.com/maps?q=vienna,+austria&amp;z=11" data-geo="data-geo">Vienna, Austria</a></h3>
+</div>
+</body>
+</html>

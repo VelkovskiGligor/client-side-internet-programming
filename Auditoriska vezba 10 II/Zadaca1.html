@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #forma{
+            width: 1300px;
+            height: 500px;
+            border: 2px solid lightgray;
+            padding: 10px;
+        }
+        #nav{
+            background-color: #aaaaaa;
+            width: 100%;
+            height: 50px;
+        }
+        ul li{
+            list-style-type: none;
+        }
+        #nav ul li{
+            display: inline-block;
+            list-style-type: none;
+            height: 25px;
+            width: 100px;
+            text-align: center;
+            padding: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .sledno{
+            background-color: lightgray;
+        }
+       .momentalno{
+           background-color: white;
+       }
+        #prvalista{
+            display: inline-block;
+            float: left;
+            width: 300px;
+            height: 150px;
+            padding: 100px;
+            border-right: 3px solid lightgray;
+        }
+        #vtoralista{
+            display: inline-block;
+            float: left;
+            width: 500px;
+            height: 150px;
+            padding-top:100px ;
+            padding-left:10px ;
+        }
+        #prvalista ul{
+            height: 100px;
+        }
+        #vtoralista ul{
+            height: 100px;
+        }
+        #prvalista ul li{
+            font-size: 20px;
+        }
+        #vtoralista ul li{
+            font-size: 20px;
+        }
+
+
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tret").hide();
+            $("#nav ul li").click(function () {
+                $("#nav ul li").removeClass("momentalno");
+                $("#nav ul li").addClass("sledno");
+                $(this).removeClass("sledno");
+                $(this).addClass("momentalno");
+            });
+            $("#prvalista ul li,#vtoralista ul li").tooltip({
+                items:"[title]",
+                content:function () {
+                    var el=$(this);
+                    if(el.is("[title]")){
+                        return el.attr("title")
+                    }
+                }
+            });
+            $("#desno").click(function () {
+
+                var flag=true;
+                $("[type='checkbox']:checked").parent("li").each(function () {
+                    var title=$(this).attr("title");
+                    var niza=title.split(" ");
+                    var poeni=niza[1];
+                    console.log(poeni);
+                    if(poeni<50){
+                        flag=false;
+                    }
+
+                });
+                if(flag){
+                    $("[type='checkbox']:checked").parent("li").appendTo($("#vtoralista ul"));
+                }else{
+                    alert("Избравте студент со помалку од 50 поени")
+                }
+                $("[type='checkbox']:checked").attr("checked",false);
+            });
+            $("#levo").click(function () {
+
+                $("[type='checkbox']:checked").parent("li").appendTo($("#prvalista ul"));
+                $("[type='checkbox']:checked").attr("checked",false);
+            });
+            $("#studenti").click(function () {
+                $("#tret").hide();
+                $("#prvalista").show();
+                $("#vtoralista").show();
+            });
+            $("#ocenki").click(function () {
+                $("#tret").show();
+                $("#prvalista").hide();
+                $("#vtoralista").hide();
+            });
+
+            var ses=0;
+            var sedum=0;
+            var osum=0;
+            var devet=0;
+            var deset=0;
+            var broceni=0;
+            presmetaj();
+            function  presmetaj(){
+                $(".a li").each(function () {
+                    var title=$(this).attr("title");
+                    broceni++;
+                    var niza=title.split(" ");
+                    var poeni=niza[1];
+                    poeni=parseInt(poeni);
+                    if(poeni>90){
+                        deset++
+                    }else if(poeni>80){
+                        devet++;
+                    }else if(poeni>70){
+                        osum++;
+                    }else if(poeni>60){
+                        sedum++;
+                    }else if(poeni>50){
+                        ses++;
+                    }
+                });
+                ses=ses/broceni*100;
+                var sesstr=ses+"";
+                sesstr=sesstr.substr(0,4);
+                sesstr=sesstr+"%";
+                sedum=sedum/broceni*100;
+                var sedumstr=sedum+"";
+                sedumstr=sedumstr.substr(0,4);
+                sedumstr=sedumstr+"%";
+                osum=osum/broceni*100;
+                var osumstr=osum+"";
+                osumstr=osumstr.substr(0,4);
+                osumstr=osumstr+"%";
+                devet=devet/broceni*100;
+                var devetstr=devet+"";
+                devetstr=devetstr.substr(0,4);
+                devetstr=devetstr+"%";
+                deset=deset/broceni*100;
+                var desetstr=deset+"";
+                desetstr=desetstr.substr(0,4);
+                desetstr=desetstr+"%";
+                $("#ses").text(sesstr);
+                $("#sedum").text(sedumstr);
+                $("#osum").text(osumstr);
+                $("#devet").text(devetstr);
+                $("#deset").text(desetstr);
+
+            }
+            $(".x").eq(0).progressbar({
+                value:ses,
+            });
+            $(".x").eq(1).progressbar({
+                value:sedum,
+            });
+            $(".x").eq(2).progressbar({
+                value:osum,
+            });
+            $(".x").eq(3).progressbar({
+                value:devet,
+            });
+            $(".x").eq(4).progressbar({
+                value:deset,
+            });
+            $(".x").each(function () {
+                var value =$(this).find(".ui-progressbar-value");
+                value.css("background","lightgray")
+            })
+
+        })
+    </script>
+</head>
+<body>
+<div id="forma">
+    <div id="nav">
+        <ul>
+             <li class="momentalno" id="studenti"><a>Студенти</a></li>
+            <li class="sledno" id="ocenki"><a>Оценки</a></li>
+        </ul>
+    </div>
+    <div id="prvalista">
+        <h2>Пред увид</h2>
+        <ul class="a">
+            <li  title="Poeni: 30 Indeks: 111111"><input type="checkbox">Петре Петревски</li>
+            <li title="Poeni: 90 Indeks: 111112"><input type="checkbox" >Аце Ацевски</li>
+            <li title="Poeni: 100 Indeks: 111113"><input type="checkbox" >Мите Митрески</li>
+            <li  title="Poeni: 85 Indeks: 111117"><input type="checkbox">Мирко Мирковски</li>
+        </ul>
+        <input type="submit" id="desno" value=">>" style="float: right;float: right;width: 40px;height: 25px">
+    </div>
+    <div id="vtoralista">
+        <h2>Конечна листа на положени студенти</h2>
+        <ul class="a">
+            <li title="Poeni: 80 Indeks: 111114"><input type="checkbox">Никола Николовски</li>
+            <li title="Poeni: 70 Indeks: 111116"><input type="checkbox" >Симона Симоноска</li>
+            <li title="Poeni: 60 Indeks: 111115"><input type="checkbox" >Ристе Ристески</li>
+        </ul>
+        <input type="submit" id="levo" value="<<" style="float:bottom; float: left;width: 40px;height: 25px">
+    </div><br>
+    <div id="tret">
+        <div class="x" style="height: 30px;border: 1px gray solid;width:300px"> </div>
+        <b>Оценка 6: <span id="ses"></span> </b><br>
+        <div class="x" style="height: 30px;border: 1px gray solid;width:300px"> </div>
+        <b> Оценка 7: <span id="sedum"></span></b><br>
+        <div class="x" style="height: 30px;border: 1px gray solid;width:300px"> </div>
+        <b> Оценка 8: <span id="osum"></span></b><br>
+        <div class="x" style="height: 30px;border: 1px gray solid;width:300px"> </div>
+        <b>Оценка 9: <span id="devet"></span></b><br>
+        <div class="x" style="height: 30px;border: 1px gray solid;width:300px"> </div>
+        <b> Оценка 10: <span id="deset"></span></b><br>
+
+    </div>
+
+</div>
+</body>
+</html>

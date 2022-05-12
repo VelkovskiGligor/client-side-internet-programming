@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="main">
+    <h1>Пријава за Bizz</h1>
+    <h2>маратон</h2>
+    <form id = "forma">
+        <label>Име:</label><input id="ime" type="text"><br>
+        <label>Презиме:</label><input id="prezime" type="text"><br>
+        <label>Код:</label><input id="kod" type="text"><br>
+        <label>Возраст:</label><input id="godini" type="text"><br>
+        <label>Пол</label>
+
+        <select id="pol">
+            <option>Маж</option>
+            <option>Жена</option>
+        </select><br>
+        <button type="button" onclick="addRow()">Додади</button>
+
+        <table id="table">
+            <th>Име</th>
+            <th>Презиме</th>
+            <th>ТАГ</th>
+            <th>Опции</th>
+        </table>
+
+        <h3>Вкупно потврдени:<span id="potvrdeni"></span></h3>
+    </form>
+</div>
+<script>
+    var row = 1;
+    var count = 0;
+
+    function findTag(arg){
+        for (var i=0;i<arg.length;i++){
+
+        }
+    }
+
+    function boja(x){
+
+        x.parentNode.parentNode.style.backgroundColor = "blue";
+    }
+    function remove(arg){
+        console.log(arg)
+       var ROW = arg.parentNode.parentNode;
+        ROW.parentNode.removeChild(ROW);
+    }
+    function addRow() {
+        var count;
+        var ime = document.getElementById("ime").value;
+        var prezime = document.getElementById("prezime").value;
+        var kod = document.getElementById("kod").value;
+        var godini = document.getElementById("godini").value;
+        var pol = document.getElementById("pol").value;
+        // var tag = findTag(kod)
+        var button1 = document.createElement("button")
+        button1.type = "button";
+        button1.setAttribute("onClick","boja(this)");
+        button1.addEventListener("click",function () {
+            button1.disabled = true;
+            button2.disabled = true;
+        });
+        var button2 = document.createElement("button")
+        button2.setAttribute("onClick","remove(this)");
+        if(ime=="" || prezime=="" || kod==""){
+            alert("Сите полиња се задолжителни");
+        }
+        else{
+            var newRow = table.insertRow(row);
+            var cell0 = newRow.insertCell(0);
+            var cell1 = newRow.insertCell(1);
+            var cell2 = newRow.insertCell(2);
+            var cell3 = newRow.insertCell(3);
+            cell0.innerHTML = ime;
+            cell1.innerHTML = prezime;
+            cell2.innerHTML = kod;
+            cell3.appendChild(button1);
+            button1.innerHTML = "Потврди"
+            cell3.appendChild(button2)
+            button2.innerHTML = "Избриши"
+            count++;
+            document.getElementById("potvrdeni").innerHTML = count;
+        }
+    }
+</script>
+</body>
+</html>

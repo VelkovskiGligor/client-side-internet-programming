@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #ramka{
+            background-color: #aaaaaa;
+            width: 400px;
+            height: 100px;
+            padding-left: 20px;
+        }
+        #sodrzina{
+            width: 400px;
+            height: 200px;
+            background-color: lightslategray;
+        }
+    </style>
+    <script src="../jquery/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sodrzina div").hide();
+            $("input").click(function () {
+                $("#sodrzina div").hide();
+                var id=$(this).attr("title");
+                $("#"+id).show();
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="ramka">
+    <h1>Navigation bar</h1>
+    <input type="submit" title="tab1" value="tab1">  <input type="submit" title="tab2" value="tab2"> <input type="submit" title="tab3" value="tab3">
+</div>
+<div id="sodrzina">
+    <h3>Content bar</h3>
+    <div id="tab1">Prv-SodrzinaPrv-SodrzinaPrv-SodrzinaPrv-SodrzinaPrv-Sodrzina</div>
+    <div id="tab2">Vtor-SodrzinaVtor-SodrzinaVtor-SodrzinaVtor-SodrzinaVtor-Sodrzina</div>
+    <div id="tab3">Tret-SodrzinaTret-SodrzinaTret-SodrzinaTret-SodrzinaTret-Sodrzina</div>
+</div>
+</body>
+</html>

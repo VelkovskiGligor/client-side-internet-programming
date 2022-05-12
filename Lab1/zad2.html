@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>zad2</title>
+<style type="text/css">
+    #central{
+        border: 1px blue solid;
+        background-color: lightgoldenrodyellow;
+        width: 400px;
+        padding: 10px;
+    }
+    label{
+        display: inline-block;
+        margin: 5px;
+
+    }
+   label span{
+    display: inline-block;
+      width: 150px;
+    }
+</style>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+   <script type="text/javascript" src="../jquery/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $("#kopce").click(function () {
+              var ime=$("#ime").val();
+              var umetnicko=$("#umime").val();
+              var pol=$("input[name='radio']:checked").val();
+              var zarn=$("select").val();
+             if (ime!="" && umetnicko != "" && pol!=undefined ){
+                $("#vmetni").append("<p>Ime:"+ime+"</p><br>");
+                $("#vmetni").append("<p>Umetnicko ime:"+umetnicko+"</p><br>");
+                 $("#vmetni").append("<p>Pol:"+pol+"</p><br>");
+                 $("#vmetni").append("<p>Zarn:"+zarn+"</p>");
+                 var dial=$("#dialog").dialog({
+                     autoOpen:false,
+                     modal:true,
+                     buttons:[{
+                         text:"Ok",
+                         click:function () {
+                             dial.dialog("close");
+                         }
+
+                     }]
+                 });
+                dial.dialog("open");
+
+             }
+             else{
+                $("label").not(":has(select)").append("<p style='color: red;font-size:15px;margin-left:154px'>Poleto e zadolziteno</p>")
+             }
+           });
+        });
+
+    </script>
+</head>
+<body>
+<div id="central">
+    <label><span>Ime</span> <input type="text" id="ime"></label><br>
+    <label><span>Umetnicko ime</span>  <input type="text" id="umime"></label><br>
+    <label><span>Pol:</span><input type="radio" name="radio" value="Masko" >Masko<input type="radio" name="radio" value="Zensko" > Zensko</label><br>
+    <label><span>Zarn</span>
+    <select>
+        <option>Rock</option>
+        <option>Pop</option>
+        <option>Clasical music</option>
+        <option>Metalica</option>
+    </select>
+
+    </label><br>
+    <input type="submit" id="kopce" value="Prijavi se">
+
+</div>
+<div id="dialog" title="Informacii">
+    <div id="vmetni"></div>
+</div>
+</body>
+</html>

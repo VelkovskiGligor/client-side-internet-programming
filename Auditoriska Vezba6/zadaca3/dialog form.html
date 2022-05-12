@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style type="text/css">
+        thead{
+            background-color: lightgray;
+            border: 1px solid lightgray;
+        }
+        tbody,tr,td{
+            height: 40px;
+            border: 1px solid lightgray;
+        }
+        #dialog div{
+            margin: 20px;
+        }
+        #dialog label{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var niza=[];
+            var dialog=$("#dialog").dialog({
+                autoOpen:false,
+                buttons:[{
+                    text:"Create an account",
+                    click:function () {
+                        var name=$("#name").val();
+                        var email=$("#email").val();
+                        var password=$("#password").val();
+                        var red='<tr>'+ '<td>'+name+'</td>'+'<td>'+email+'</td>'+'<td>'+password+'</td>'+'</tr>';
+                        $("#table").append(red);
+                        var pomniza=[];//'['+'"'+name+'"'+','+'"'+email+'"'+','+'"'+password+'"'+']';    //NERABOTEEEEEEEEEEEEEE!!!!!!!!!!!!1
+                        pomniza.push(name,email,password);
+                        niza.push(pomniza);
+                        $(dialog).dialog("close");
+                    }
+                },{
+                    text:"Cancel",
+                    click:function () {
+                        $("#dialog").dialog("close");
+                   }
+                }]
+            });
+            $("#click").click(function () {
+                dialog.dialog("open");
+            })
+            $("#nizaa").click(function () {
+                for(var item in niza){
+                    for (var i in niza[item]){
+                        console.log(niza[i]);// neso me zaebavaaa
+                    }
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+<h2>Existing Users:</h2>
+
+<table id="table">
+    <thead>
+         <tr>
+             <th>Name</th>
+             <th>Email</th>
+             <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+     <tr>
+        <td>John Doe</td>
+        <td>john.doe@example.com</td>
+        <td>johndoe1</td>
+      </tr>
+
+    </tbody>
+
+</table>
+<div id="dialog" title="Create new user">
+    <div>All form fields are required.</div>
+    <div>
+        <label>Name</label>
+        <br>
+        <input type="text" id="name">
+
+        <br>
+        <br>
+        <label>Email</label>
+        <br>
+        <input type="text" id="email">
+        <br>
+        <br>
+        <label>Password</label>
+        <br>
+        <input type="password" id="password">
+    </div>
+</div>
+<input type="submit" value="Create new user" id="click" style="margin-left: 5px;height:25px;font-size: 20px;margin-top:5px">
+    <input type="submit" value="see niza" id="nizaa">
+</body>
+</html>

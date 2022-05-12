@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script type="text/javascript" language="JavaScript1.5">
+    function validate() {
+        var input=document.getElementById("broj").value;
+        var kocka=document.getElementById("here");
+        if(input>=0 && input<=10){
+         kocka.innerHTML="<p>Correct</p>"
+         kocka.style.backgroundColor="green"
+        }
+        else{
+            kocka.innerHTML="<p>Incorect</p>"
+            kocka.style.backgroundColor="red"
+        }
+    }
+</script>
+</head>
+<body>
+<p>
+    Vnesete broj od 1 do 10
+</p>
+<span><input type="text" id="broj"></span>
+<span> <input type="submit" onclick="validate()"></span>
+<div id="here"></div>
+</body>
+</html>

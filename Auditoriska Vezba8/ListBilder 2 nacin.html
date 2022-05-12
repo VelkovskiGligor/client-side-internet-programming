@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List builder</title>
+    <script type="text/javascript" src="../jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.css">
+    <style type="text/css">
+        ol {
+            width: 300px;
+            height: 200px;
+            cursor: pointer;
+        }
+        ol li{
+            height: 20px;
+        }
+        input{
+            display: inline-block;
+
+        }
+        #lista{
+            position: absolute;
+            left:500px;
+            top: 0px;
+            background-color: red;
+        }
+        #pocetna{
+            margin-top:20px;
+        }
+        #dodaj{
+            position: absolute;
+            left: 360px;
+            top:60px;
+        }
+        #vrati{
+            position: absolute;
+            left: 360px;
+            top:80px;
+        }
+        .izbor{
+            background-color: #eb8f00;
+            border: 1px solid black;
+        }
+        .selected ui-selected{
+            background-color: #eb8f00;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $(".selected").selectable();
+
+        });
+
+
+
+
+    </script>
+</head>
+<body>
+<ol id="pocetna" class="selected">
+    <li class="ui-widget-content">Item 1</li>
+    <li class="ui-widget-content">Item 2</li>
+    <li class="ui-widget-content">Item 3</li>
+    <li class="ui-widget-content">Item 4</li>
+    <li class="ui-widget-content">Item 5</li>
+    <li class="ui-widget-content">Item 6</li>
+    <li class="ui-widget-content">Item 7</li>
+    <li class="ui-widget-content">Item 8</li>
+
+</ol>
+<input type="submit" value=">" id="dodaj"><br>
+<input type="submit" value="<" id="vrati">
+<ol id="lista" class="selected">
+
+</ol>
+</body>
+</html>

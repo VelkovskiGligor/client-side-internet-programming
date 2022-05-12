@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primer 3</title>
+    <style type="text/css">
+        .green{
+            color: green;
+            font-size: 20px;
+        }
+
+
+    </style>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $("#firstlist li").last().mouseenter(function () { // $("#firstlist li:last")
+                $(this).addClass("green");
+
+            });
+            $("#firstlist li:last").mouseleave(function () {
+                $(this).removeClass("green")
+            });
+
+        /*  $("#firstlist li:last").hover(function () {
+              $(this).addClass("green");
+          },function () {
+              $(this).removeClass("green");
+          }) moze i vaka*/
+        });
+
+    </script>
+</head>
+<body>
+<ol id="firstlist">
+    <li>First element</li>
+    <li>Secound element</li>
+    <li>Third element</li>
+
+</ol>
+
+<ol id="secoundlist">
+    <li>First element, second list</li>
+    <li>Secound element, second list</li>
+    <li>Thired element, second list</li>
+    <ul>
+        <li>Child one</li>
+        <li>Child two</li>
+    </ul>
+
+</ol>
+
+</body>
+</html>

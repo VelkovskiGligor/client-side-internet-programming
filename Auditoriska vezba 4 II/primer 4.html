@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        body{
+            margin-left: -10px;
+        }
+       nav ul li{
+           margin-right: 10px;
+           height: 30px;
+           width: 80px;
+           text-align: center;
+            padding-top: 5px;
+           size: 10px;
+           color: white;
+           background-color: lightskyblue;
+            display: inline-block;
+
+       }
+       div{
+           margin-left: 20px;
+           width: 450px;
+           background-color: #aaaaaa;
+       }
+       h3{
+           margin-left: 20px;
+       }
+       div label{
+           display: inline-block;
+           margin-top: 10px;
+           margin-left: 20px;
+           margin-right:20px;
+           margin-bottom: 10px;
+       }
+        div label span{
+            display: inline-block;
+            width: 100px;
+        }
+        .sleden{
+            color: #aaaaaa;
+            background-color: black;
+            opacity: 50%;
+        }
+        .momentalan{
+            color: white;
+            background-color: lightskyblue;
+            opacity: 100%;
+        }
+        .pominat{
+            opacity: 50%;
+        }
+
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var index=0;
+            $("div").hide();
+            $("div").eq(0).show();
+            $("nav ul li").addClass("sleden");
+            $("nav ul li:first-child").addClass("momentalan");
+            $("nav ul li:first-child").removeClass("sleden");
+
+            $("#next").click(function () {
+                if(index<3){
+                    index++;
+                    $("div").hide();
+                    $("div").eq(index).show();
+                    $("nav ul li").eq(index-1).removeClass("momentalan");
+                    $("nav ul li").eq(index-1).addClass("pominat");
+                    $("nav ul li").eq(index-1).removeClass("sleden");
+                    $("nav ul li").eq(index).removeClass("sleden");
+                    $("nav ul li").eq(index).removeClass("pominat");
+                    $("nav ul li").eq(index).addClass("momentalan");
+
+                }
+            });
+            $("#back").click(function () {
+                if(index!=0){
+                    index--;
+                    $("div").hide();
+                    $("div").eq(index).show();
+                    $("nav ul li").eq(index+1).removeClass("momentalan");
+                    $("nav ul li").eq(index+1).removeClass("pominat");
+                    $("nav ul li").eq(index+1).removeClass("sleden");
+                    $("nav ul li").eq(index+1).addClass("pominat");
+                    $("nav ul li").eq(index).removeClass("pominat");
+                    $("nav ul li").eq(index).addClass("momentalan");
+
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+<nav>
+    <ul>
+        <li>Account</li>
+        <li>Profile</li>
+        <li>Hint</li>
+        <li>Finish</li>
+    </ul>
+</nav>
+
+    <h3 id="header">Account</h3>
+
+<div id="prv">
+    <label><span>User name</span><input type="text"></label><br>
+    <label><span>Password</span><input type="text"></label><br>
+    <label><span>Comfirm Password</span><input type="text"></label><br>
+</div>
+<div id="vtor">
+    <label><span>First name</span><input type="text"></label><br>
+    <label><span>Last name</span><input type="text"></label><br>
+    <label><span>Email </span><input type="text"></label><br>
+    <label><span>Addres </span><input type="text"></label><br>
+</div>
+<div id="tret">
+   <ul>
+       <li>Foo</li>
+       <li>Bar</li>
+       <li>Foobar</li>
+   </ul>
+</div>
+<div id="cet">
+    <input type="checkbox"> I agree with the Terms and <br></br>Conditions.
+</div>
+
+
+<br>
+<input type="submit" id="back" value="prev" style="width: 100px;margin-right: 20px;margin-left: 20px"><input type="submit" id="next" value="next" style="width: 100px">
+
+</body>
+</html>

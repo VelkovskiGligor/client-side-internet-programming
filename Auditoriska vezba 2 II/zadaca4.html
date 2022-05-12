@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../jquery/jquery.js"> </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $("#kopce").click(function () {
+              var tekst=$("#tekst").val();
+              tekst=parseInt(tekst);
+              if( tekst < 0 || tekst > 10){
+                  $("#respons").text("Incorect!");
+                  $("#respons").css("color","red");
+              }else{
+                  $("#respons").text("Correct!");
+                  $("#respons").css("color","green");
+              }
+           });
+        });
+    </script>
+</head>
+<body>
+<h3>Please input a number 1-10</h3>
+<input type="text" style="width: 200px" id="tekst">
+<input type="submit" value="Submit" id="kopce">
+<p id="respons" style="color:red;"></p>
+</body>
+</html>

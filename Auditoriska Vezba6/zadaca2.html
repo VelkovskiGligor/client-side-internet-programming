@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        li{
+            display: inline-block;
+            float: left;
+            text-align: center;
+            background-repeat: no-repeat;
+        }
+        li a{
+            display: block;
+            width: 48px;
+            height: 48px;
+            text-decoration:none;
+            margin-right: 10px;
+        }
+        li a strong{
+
+            position: absolute;
+            color: #fff;
+            padding: 3px;
+            background-color: black;
+
+        }
+        .delici{
+            background-image: url("images/delicious.png");
+        }
+        .digg{
+            background-image: url("images/digg.png");
+        }
+        .facebook{
+            background-image: url("images/facebook.png");
+        }
+        .flickr{
+            background-image: url("images/flickr.png");
+        }
+        .linkeddin{
+            background-image: url("images/linkedin.png");
+        }
+        .reddit{
+            background-image: url("images/reddit.png");
+        }
+        .twitter{
+            background-image: url("images/twitter.png");
+        }
+        .feeds{
+           background-image: url("images/rss.png");
+        }
+        div{
+            position: center;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+          $("li").each(function() {
+              $("a strong", this).css("opacity", "0");//opacity dava vidlivost na elementitte ima vrednos megju 0-1
+          });
+          $("li").hover(function () {
+              $("li").each(function () {        //koga ke se doblicime so gluvceto
+                  $(this).css("opacity","0.3")  //na site li gi zableduvame
+              });
+              $(this).css("opacity","1");       //targetot netreba da e zableden pa go vrakjame vo normala
+
+              $(this).children().children().animate({       //se zima samo teksto i se prikazuva jasno za 0,3 sec
+                  opacity:1,
+                  top:"-5px"
+              },300);
+
+          },function () {           //koga ke si otideme so gluvceto
+              $("li").each(function () {    //site slikicki treba da se jasno vidlivi pa opacity go stavame na 1
+                  $(this).css("opacity","1");
+              });
+              $(this).css("opacity","1");   //ne e potrebno bidejki pogore i targetot stanuva jasno vidliv
+              $(this).children().children().animate({ //teksto stanuva nevidliv
+                  opacity: 0,
+                  top: "-5px"
+              },300);
+          })
+
+      });
+
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+        <li class="delici" >
+            <a href="http://www.delicious.com/"><strong >Delicious</strong></a>
+        </li>
+        <li class="digg">
+            <a href="http://digg.com/"><strong >Digg</strong></a>
+        </li>
+        <li class="facebook">
+            <a href="http://www.facebook.com/"><strong >Facebook</strong></a>
+        </li>
+        <li class="flickr">
+            <a href="http://www.flickr.com/"><strong >Flickr</strong></a>
+        </li>
+        <li class="linkeddin">
+            <a href="http://www.linkedin.com/"><strong >LinkedIn</strong></a>
+        </li>
+        <li class="reddit">
+            <a href="http://www.reddit.com/"><strong >Reddit</strong></a>
+        </li>
+        <li class="feeds">
+            <a href="http://feeds2.feedburner.com/marcofolio"><strong >RSS</strong></a>
+        </li>
+        <li class="twitter">
+            <a href="http://twitter.com/"><strong >Twitter</strong></a>
+        </li>
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dialog 1</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+        var dialog= $("#dialog").dialog({
+                autoOpen:false,
+                modal:true,
+                show:{
+                    effect:"blind",
+                    duration:1000
+                }
+            },{
+                hide:{
+                    effect:"explode",
+                    duration: 1000
+                }
+            });
+            $("#open").click(function () {
+                $(dialog).dialog("open")
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="submit" value="Open dialog" id="open">
+<div id="dialog" title="Basic dialog" >
+<p>This is the default dialog which is useful for displaying information. The dialog window
+    can be moved, resized and closed with the 'x' icon.</p>
+</div>
+</body>
+</html>

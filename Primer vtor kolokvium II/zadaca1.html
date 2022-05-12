@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        #lista{
+            width: 400px;
+            list-style-type: none;
+        }
+        #lista li{
+            height:25px ;
+            text-align: center;
+            cursor: pointer;
+        }
+        .selectable .ui-widget-content{
+            background: white;
+            color: black;
+        }
+        .selectable .ui-selected{
+            background: #e78f08;
+            color: white;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#podatoci").hide();
+            $("#isbn").tooltip({
+                items:"[title]",
+                content:function () {
+                    var el=$(this);
+                    if(el.is("[title]")){
+                        return el.attr("title");
+                    }
+                }
+            });
+            $(".selectable").selectable();
+
+            $("#add").click(function () {
+                var isbn=$("#isbn").val();
+                $.ajax({
+                    url:"https://openlibrary.org/api/books?bibkeys="+isbn+"&jscmd=details&callback=mycallback",
+                    dataType:"jsonp",
+                    success:function (data) {
+                        console.log(data);
+                        $.each(data,function (i,items) {
+
+                            //console.log(items.details.title);
+                            var title=items.details.title;
+                            var isbn_13=items.details.isbn_13;
+                            var thumbnail_url=items.thumbnail_url;
+                            var info_url=items.info_url;
+                            var publishers=items.details.publishers;
+                            //console.log(isbn_13)
+                           // console.log(info_url);
+                           // console.log(thumbnail_url);
+                            var el=$("<li class='ui-widget-content'>"+title+"</li>");
+                            el.attr("title",title);
+                            el.attr("isbn_13",isbn_13);
+                            el.attr("thumbnail_url",thumbnail_url);
+                            el.attr("info_url",info_url);
+                            el.attr("publishers",publishers);
+                            $("#lista").append(el);
+                            $(el).mousedown(function () {
+                                $("#podatoci").show();
+                                //console.log("hHH");
+                                $("#p_isbn").text($(this).attr("isbn_13"));
+                                $("#p_slika").attr("src",$(this).attr("thumbnail_url"));
+                                $("#p_link").text($(this).attr("info_url"));
+                                $("#p_publishers").text($(this).attr("publishers"));
+                            })
+                        })
+
+                    }
+                })
+
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+<label><span>ISBN: </span><input type="text" id="isbn" title="vnesete 10 ili 13 cifren broj" ></label><br>
+<input type="submit" value="Add book" id="add" style="margin-left: 150px;margin-top: 5px;height: 25px"><br>
+<ul id="lista" class="selectable">
+
+</ul>
+<div id="podatoci">
+ Isbn: <span id="p_isbn"></span><br>
+    <img id="p_slika" style="width: 200px;height: 200px" src=""><br>
+    Link: <span id="p_link"></span><br>
+    Publishers: <span id="p_publishers"></span>
+</div>
+
+</body>
+</html>

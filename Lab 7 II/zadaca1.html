@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        nav ul{
+            height: 35px;
+            width: 400px;
+            background-color: darkred;
+        }
+        nav ul li{
+            display: inline-block;
+            width: 110px;
+            text-align: center;
+            font-size: 25px;
+            height: 35px;
+            color: white;
+            cursor: pointer;
+        }
+        ul li{
+            list-style-type: none;
+        }
+        nav ul li:hover{
+           color: red;
+            background-color: #283744;
+            font-size: 30px;
+        }
+        .momentalno{
+            background-color: green;
+        }
+        .sledno{
+            background-color: blue;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#mixers").hide();
+            $("nav ul li").click(function () {
+                $("nav ul li").removeClass("momentalno");
+                $("nav ul li").addClass("sledno");
+                $(this).removeClass("sledno");
+                $(this).addClass("momentalno");
+            });
+            $(".players").click(function () {
+                $("#players").show();
+                $("#mixers").hide();
+            });
+            $(".mixers").click(function () {
+                $("#mixers").show();
+                $("#players").hide();
+            });
+            $(".basket").click(function () {
+                $("#mixers").hide();
+                $("#players").hide();
+            });
+            $("#basketlist").sortable();
+            $("#firstlist,#secondlist").sortable({
+                connectWith:"#basketlist"
+            })
+
+        });
+    </script>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="momentalno players">Players</li>
+        <li class="sledno mixers">Mixer</li>
+        <li class="sledno basket" >Basket</li>
+    </ul>
+</nav>
+<div id="players">
+    <h2>Players:</h2>
+    <ul id="firstlist">
+        <li>7 Pioner 2000</li>
+        <li>777 Pioner 1986</li>
+        <li>7777 Pioner 1968</li>
+    </ul>
+</div>
+<div id="mixers">
+    <h2>Mixers:</h2>
+    <ul id="secondlist">
+        <li>130 Pioner DJM</li>
+        <li>420 Pioner DJM</li>
+        <li>670 Pioner DJM</li>
+    </ul>
+</div>
+<div id="basket">
+    <h2>Basket:</h2>
+    <ul id="basketlist">
+        <li>Fill me up!</li>
+    </ul>
+</div>
+</body>
+</html>

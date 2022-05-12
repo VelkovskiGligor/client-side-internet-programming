@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>zadaca1</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style type="text/css">
+        nav{
+            height: 40px;
+            margin-left: 5px;
+            width: 100%;
+            background-color: #455868;
+            margin-right: 5px;
+            font-family: 'PT Sans', Arial, sans-serif;
+
+            border-bottom: #283744 2px solid;
+        }
+        nav ul li,nav ul li a{
+            width: 100px;
+            height: 40px ;
+            display:inline-block;
+            border-left: 1px solid #8c99a4;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+           cursor: pointer;
+            text-decoration: none;
+        }
+        nav ul li:first-child{
+            width: 100px;
+            height: 40px ;
+            display:inline-block;
+            border-left: 0;
+            margin-left: 150px;
+
+        }
+        #sodrzina{
+           width: 100%;
+
+            margin-left: 5px;
+            margin-top: 10px;
+
+        }
+        img{
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#podatoci").hide();
+            var category;
+            $("ul li a").click(function () {
+                var offset=0;                   //aber neam sto e
+                category=$(this).text();         //koj grad od menito e izberen
+                var limit=50;                               //Limit e kolku max sliki da zeme od stranata
+                getPhotot(category,offset,limit);
+            });
+
+            function getPhotot(kategorija,offset,limit) {
+                if(offset==0){
+                    console.log("HERE");
+                    $('#sodrzina').html("<img src='animate.gif' style='display:block;width:15px;height: 50px'/>");
+                    $.ajax({
+                        url: "https://partner-api.groupon.com/deals.json?tsToken=US_AFF_0_987654_123456_0&division_id=" + kategorija + "&offset=" + offset + "&limit=" + limit,
+                        dataType: "jsonp",
+                        success: function (data) {
+                            if (offset == 0) $('#sodrzina').html("");
+                            $.each(data.deals, function (i, item) {
+                                var img = $("<img>");
+                                img.attr('width', '200px');
+                                img.attr('height', '150px');
+                                img.attr('title', item.title);
+                                img.attr("date-from", item.startAt);
+                                img.attr("date-to", item.endAt);
+                                img.attr("buyUrl", item.dealUrl);
+                                img.attr("src", item.largeImageUrl).appendTo("#sodrzina");
+                                $(img).click(function () {
+                                    console.log("HA");
+                                    $("#sodrzina").hide();
+                                    $("#podatoci").show();
+
+                                    $("body").on("click", "img", function(){
+                                        var im = $(this);
+
+
+
+                                        $('#title').html("<a href='"+im.attr('buyUrl')+"'>" + im.attr('title') + "</a>");
+                                        $('#from').html(im.attr("date-from"));
+                                        $('#to').html(im.attr("date-to"));
+                                        $('#im').html("<img src='" + im.attr("src") + "'><img>");
+                                        var tmp = im.attr('buyUrl');
+                                        tmp = tmp.substring(tmp.indexOf("http"));
+                                        var full="https://www.facebook.com/sharer/sharer.php?u="+tmp;
+                                        $('#share').html("<a style='color:#ffffff' href = '"+full+"' target='_blank'> Share on Facebook </a>");
+                                    });
+                                });
+                            })
+                        }
+                    })
+                }
+            }
+
+                $("#top").click(function () {
+                    $("#sodrzina").show();
+                    $("#podatoci").hide();
+                })
+
+        })
+
+    </script>
+
+</head>
+
+
+<body>
+<nav id="navigacija">
+    <ul>
+        <li><a href="javascript:void(0)">Chicago</a></li>
+        <li><a href="javascript:void(0)">Seattle</a></li>
+        <li><a href="javascript:void(0)">Orlando</a></li>
+        <li><a href="javascript:void(0)">Atlanta</a></li>
+        <li><a href="javascript:void(0)">Houston</a></li>
+        <li><a href="javascript:void(0)">Miami</a></li>
+    </ul>
+</nav>
+<div id="sodrzina"></div>
+<div id="podatoci">
+    <div id="title" class="content"> </div>
+    <label class="content" style="clear:both">Date from:</label>
+    <div id="from" class="content"></div>
+    <label class="content" style="clear:both">Date to:</label>
+    <div id="to" class="content"></div>
+    <div id="im" style="float:left;clear: both;padding-top: 20px;"></div>
+    <div id="share" style="float:left; background:#0000ff;" ></div>
+    <input id="top" style="float:left;clear: both; font-size: 1.4em;" value="Back" type="button"/>
+</div>
+</body>
+</html>

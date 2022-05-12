@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email client!</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style type="text/css">
+        #form{
+            padding: 10px;
+            border: 1px solid black;
+            width: 250px;
+            margin-bottom: 20px;
+
+        }
+        nav{
+            width: 250px;
+            background-color: lightskyblue;
+            height: 50px;
+            margin-bottom: 20px;
+            margin-left: 10px;
+            border: 1px solid black;
+
+        }
+
+        nav ul li{
+            display: inline-block;
+            border: 1px solid black;
+            color: white;
+            padding-top: 5px;
+            padding-left: 6px;
+            padding-right: 6px;
+            margin-left: 3px;
+
+        }
+        .momentalno{
+            background-color: #eb8f00;
+            border-bottom: 3px blue solid;
+        }
+        .pominata{
+            background-color: #eb8f00;
+            border-bottom: 3px blue solid;
+            opacity: 60%;
+
+        }
+        #form input{
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        #form #insert{
+            background-color: #eb8f00;
+            color: white;
+            width: 70px;
+            height: 30px;
+            font-size: 20px;
+        }
+        #form #send{
+            background-color: forestgreen;
+            color: white;
+            width: 70px;
+            height: 30px;
+            font-size: 20px;
+        }
+        #form #poraka{
+            width: 200px;
+            background-color: lightgreen;
+            height: 70px;
+            display: block;
+        }
+        #sandace,#Done{
+            padding: 10px;
+            border: 1px solid black;
+            width: 250px;
+            height: 383px;
+        }
+        #Done h2{
+            margin-left: 70px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("nav li").eq(0).addClass("momentalno");
+            $("#sandace").hide();
+            $("#Done").hide();
+            var password;
+            var reppassword;
+            var dial=$("#dialog").dialog({
+                autoOpen:false,
+                closeOnEscape: false,
+                open: function(event, ui) { $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();},
+                buttons:[{
+                    text:"Ok",
+                    click:function () {
+                        password=$("#password").val();
+                        reppassword=$("#repeat").val();
+                        console.log(password);
+                        console.log(reppassword);
+                        var flag=0;
+                        if ( password == reppassword && password.length>6 ){
+                            for (var i=0;i<password.length;i++){
+                                var znak=password.charAt(i);
+                                if(znak=="@" || znak=="!" || znak=="#" || znak=="$" || znak=="%" || znak=="^" ||znak=="&" ||znak=="*" || znak=="(" || znak==")" || znak=="_" ||znak=="-" || znak=="+" ||znak=="=" )
+                                {
+                                    flag=1;
+                                }
+                            }
+                            if(flag==1){
+                                dial.dialog("close");
+                            }
+
+                        }
+                        $("#error").text("Passwords error!");
+
+                    }
+                }]
+            });
+
+            var diall=$("#dialogg").dialog({
+                autoOpen:false,
+                closeOnEscape:false,
+                open: function(event, ui) { $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();},
+                buttons:[{
+                    text:"Inset",
+                    click:function () {
+                        var tekst=$("#textarea").val();
+                        $("#poraka").text(tekst);
+                        diall.dialog("close");
+
+                    }
+                },{
+                    text:"Clear",
+                    click:function () {
+                        $("#to").val("");
+                        $("#cc").val("");
+                        $("#subject").val("");
+                        diall.dialog("close");
+
+                    }
+                }]
+            });
+
+            dial.dialog("open");
+
+            $("#insert").click(function () {
+                var to=$("#to").val();
+                var cc=$("#cc").val();
+                var sub=$("#subject").val();
+                $("#too").text(to);
+                $("#ccc").text(cc);
+                $("#subjectt").text(sub);
+                diall.dialog("open");
+
+            });
+
+            var dialll=$("#dialoggg").dialog({
+                autoOpen:false,
+                closeOnEscape:false,
+                open: function(event, ui) { $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();},
+                buttons:[{
+                    text:"Ok",
+                    click:function () {
+                        var newpas=$("#zemime").val();
+                        if ( password == newpas  ){
+                            alert("Messange send!");
+                            dialll.dialog("close");
+                        }
+                        $("#erorr").text("Passwords error!");
+
+                    }
+                }]
+            });
+
+
+            $("#send").click(function () {
+                dialll.dialog("open");
+                var to=$("#to").val();
+                var sub=$("#subject").val();
+                $("#mess").append("<div style='width: 230px;margin-bottom:4px;margin-right: 10px;border: 1px solid black'>To: "+to+"<br>Subject: "+sub+"<br> </div> ")
+
+            });
+            var poz=0;
+            $("#napred").click(function () {
+                if(poz!=2){
+                    poz++;
+                }
+
+                if(poz==0){
+                    $("#form").show();
+                    $("#sandace").hide();
+                    $("#Done").hide();
+                }
+                if(poz==1){
+                    $("#form").hide();
+                    $("#sandace").show();
+                    $("#Done").hide();
+                }
+                if(poz==2){
+                    $("#form").hide();
+                    $("#sandace").hide();
+                    $("#Done").show();
+                }
+                $("#navigacija ul li").eq(poz-1).removeClass("momentalno");
+                $("#navigacija ul li").eq(poz-1).addClass("pominata");
+                $("#navigacija ul li").eq(poz).removeClass("pominata");
+                $("#navigacija ul li").eq(poz).addClass("momentalno")
+
+            });
+            $("#nazad").click(function () {
+                if(poz!=0){
+                    poz--;
+                }
+
+                if(poz==0){
+                    $("#form").show();
+                    $("#sandace").hide();
+                    $("#Done").hide();
+                }
+                if(poz==1){
+                    $("#form").hide();
+                    $("#sandace").show();
+                    $("#Done").hide();
+                }
+                if(poz==2){
+                    $("#form").hide();
+                    $("#sandace").hide();
+                    $("#Done").show();
+                }
+                $("#navigacija ul li").eq(poz+1).removeClass("momentalno");
+                $("#navigacija ul li").eq(poz+1).addClass("pominata");
+                $("#navigacija ul li").eq(poz).removeClass("pominata");
+                $("#navigacija ul li").eq(poz).addClass("momentalno");
+            });
+
+            $("#brisi").click(function () {
+                $("#mess").html("");
+            })
+        });
+
+    </script>
+</head>
+<body>
+<div id="dialog" title="Set your password">
+    <span>New Password:</span> <br>
+    <span style="color: red" id="error"></span> <br>
+    <input type="password"  id="password">    <br>
+    <span>Repeat Password:</span>   <br>
+    <input type="password" id="repeat">
+</div>
+<div id="dialogg" title="Messange Content">
+    <span>To:<span id="too"></span></span>    <br>
+
+    <span >Cc:<span id="ccc"></span> </span>    <br>
+
+    <span >Subject:<span id="subjectt"></span></span>   <br>
+
+    <span>Content:</span>   <br>
+    <textarea id="textarea"></textarea>
+    <br>
+</div>
+<div id="dialoggg" title="Password">
+    <span>Password:</span>  <br>
+    <span style="color: red" id="erorr"></span> <br>
+    <input type="password" id="zemime">
+</div>
+
+
+
+<nav id="navigacija">
+    <ul>
+        <li id="first">Email</li>
+        <li id="sec">Sent</li>
+        <li id="thre">Done</li>
+    </ul>
+</nav>
+<div id="form">
+    <h2>New message:</h2>
+    <span>To:</span>    <br>
+    <input type="text" id="to"> <br>
+    <span>Cc:</span>    <br>
+    <input type="text" id="cc"> <br>
+    <span>Subject:</span>   <br>
+    <input type="text" id="subject">     <br>
+    <span>Content:</span>   <br>
+    <span id="poraka"></span><br>
+    <input type="submit" value="insert" id="insert"> <input type="submit" value="send" id="send">
+</div>
+
+<div id="sandace" >
+    <h2>Sent Items:</h2>
+    <div id="mess"></div>
+        <input type="submit" id="brisi" value="Delete" style="padding: 2px;color: white;background-color: #eb8f00;width: 70px;height: 30px;font-size: 20px">
+
+</div>
+<div id="Done" >
+    <h2>Done</h2>
+
+</div>
+<nav id="dole">
+    <div style="margin-top:10px;margin-left: 20px ">
+    <input type="submit" value="Previous"  id="nazad" style="width: 100px;height: 25px;background-color: #eb8f00;color: white">   <input type="submit" value="Next" id="napred" style="width: 100px;height: 25px;background-color: #eb8f00;color:white  ">
+    </div>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vizuelna ramkas</title>
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+    <style type="text/css">
+        input{
+            display: inline-block;
+            margin-left: 5px;
+        }
+        .tekst{
+            background-color:navajowhite;
+            width: 500px;
+            height: 400px;
+        }
+    </style>
+    <script type="text/javascript">
+       $(document).ready(function () {
+           $("#tab1").click(function () {
+             $(".tekst").each(function () {
+
+                 $(this).hide();
+
+             });
+               $("#div1").show();
+
+           });
+           $("#tab2").click(function () {
+               $(".tekst").each(function () {
+                   $(this).hide()
+               });
+               $("#div2").show()
+
+           });
+           $("#tab3").click(function () {
+               $(".tekst").each(function () {
+                   $(this).hide()
+               });
+               $("#div3").show()
+
+           });
+       })
+
+    </script>
+</head>
+<body>
+    <div style="width: 500px;background-color: #8c99a4;height: 70px">
+
+        <h3>Navigation bar</h3>
+        <input type="submit" value="Tab 1" id="tab1">
+        <input type="submit" value="Tab 2" id="tab2">
+        <input type="submit" value="Tab 3" id="tab3">
+    </div>
+<div id="div1" class="tekst">
+   <b> Во јазиците,</b> текст е нешто што содржи зборови да искаже нешто. Поимот обично има пошироко значење.<br>
+    Во лингвистика текстот вклучува два типа на контрасти. Еден е меѓу систем и текст, со тоа што под<br>
+    систем се подразбира способноста на говорниците да комуницираат користејќи вербални знаци и гестови,<br>
+    а под текст се подразбира производот на оваа способност. Другиот контраст е меѓу текст, разбран како <br>
+    пишан текст, и говор, изустен текст.
+</div>
+<div id="div2" class="tekst" hidden>
+    Во теорија на литература текст е предметот што се студира, без разлика на тоа дали станува збора за<br>
+    роман, песна, филм, реклама, или било што со лингвистичка компонента. Широкото користење на поимот<br>
+    потекнува од развивањето на семиотиката во текот на 1960-те и е од утврдено со подоцнежните културни <br>
+    студии од 1980-те.
+</div>
+<div id="div3" class="tekst" hidden>
+    Последната промена на страницава е извршена на 7 декември 2016 г. во 02:09 ч.<br>
+    Текстот е достапен под условите на лиценцата Криејтив комонс Наведи извор-Сподели под исти услови.<br>
+    Може да важат и дополнителни услови. За повеќе информации, погледајте ги Условите на употреба.
+</div>
+</body>
+</html>

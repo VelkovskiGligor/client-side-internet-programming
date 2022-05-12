@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primeri</title>
+    <script type="text/javascript" src="../../jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../../jquery/jquery-ui.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $("#date").datepicker({
+               appendText:"dd mm yy", //        Se daodava tekst do inputot
+               showAnim:"fold",       //       kalendarot se otvara vo vid na slideshow
+               duration:"slow",        //        vreme traenje na otvaranjeto na kalendarot
+               changeYear:true,         //        na kalendarot moze da se selektira godinata
+               changeMonth:true,        //         na kalendarot moze da se selektira mesecot
+                numberOfMonths:2,       //          kolku meseca da pokazuva od ednska
+               dateFormat:"D M yy",    //          u koj format da go vrakja izbranoto dato
+               dayNamesMin: ["Пон","Вто","Сре","Чет","Пет","Саб","Нед"], //Gi prikazuva prevedeno na kalendaro
+               dayNamesShort:["Пон","Вто","Сре","Чет","Пет","Саб","Нед"], //Vo input poleto gi vrakja prevedeni
+               monthNames:["Јануари","Фебруари","Март","Април","Мај","Јуни","Јули","Август","Септември","Октомври","Ноември","Декември",],
+               monthNamesShort:["Јан","Феб","Мар","Апр","Мај","Јун","Јул","Авг","Сеп","Окт","Ное","Дек"],
+           })
+        });
+        //KRATENKI  ZA dateFormat!!!!!!!!!!!!!!!!!!!!!!!!!1
+        //  d – ден (single digit where applicable)
+        //  dd – ден (two digits)
+        //   m – месец (single digit where applicable)
+        //   mm – месец (two digits)
+        //   y – година (two digits)
+        //  yy – година (four digits)
+        //  D – кратко име на денот
+        // DD – цело име на денот
+        // M – кратко име на месецот
+        // MM – цело име на месецот
+        // MM – цело име на месецот
+
+
+    </script>
+</head>
+<body>
+<p>Enter date <input id="date" placeholder="Click to pick date!"> </p>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <script type="text/javascript" language="JavaScript1.5">
+        function presmetaj(x) {
+        var prv = document.getElementById("prv").value;
+        var vtor = document.getElementById("vtor").value;
+        var vk=document.getElementById("rezultat");
+       prv=parseInt(prv);
+       vtor=parseInt(vtor);
+            console.log(prv);
+            console.log(vtor);
+        if (isNaN(prv) || isNaN(vtor)) {
+        alert("Vnesete Broevi!")
+        } else{
+            var string="";
+            var rez=0;
+        if(x=="+") {
+            rez=prv+vtor
+            string=string+ prv + "+" +vtor + "=" + rez;
+            vk.value=string
+
+        }
+        else if( x=="-"){
+            rez=prv-vtor
+            string=string+ prv + "-" + vtor + "=" + rez;
+            vk.value=string
+        }
+        else if( x=="*"){
+            rez=prv*vtor
+            string=string+ prv + "*" +  vtor + "=" + rez;
+            vk.value=string
+        }
+        else if( x=="/"){
+            rez=prv/vtor
+            string=string+ prv + "/" + vtor + "=" + rez;
+            vk.value=string
+        }
+        console.log(vk.value)
+
+        }
+         }
+    </script>
+</head>
+<body>
+<form>
+    <table border="1" bgcolor="#faebd7">
+        <tr>
+            <th>Operant 1:</th>
+            <td><input type="text" id="prv"></td>
+        </tr>
+        <tr>
+            <th>Operant 2:</th>
+            <td><input type="text" id="vtor"></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" name="input" value="+" onclick="presmetaj('+')">+
+                <input type="radio" name="input" value="-"  onclick="presmetaj('-')">-
+                <input type="radio" name="input" value="*"  onclick="presmetaj('*')">*
+                <input type="radio" name="input" value="/"  onclick="presmetaj('/')">/
+            </td>
+            <td><input type="text" id="rezultat"></td>
+        </tr>
+    </table>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>primer1</title>
+    <script type="text/javascript" src="../jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.css">
+    <style type="text/css">
+        div{
+            border: 1px black dashed;
+            background-color: lightblue;
+            width: 200px;
+        }
+        #emptu{
+
+            width: 200px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("div").hide();
+            $("#emptu").show();
+            var films=[{name: "Bad Education",opis: "Using cheery smiles and go-getter glares to conceal profound depths of resentment, ambition and greed, Hugh Jackman gives the performance of his career as Roslyn, Long Island public school superintendent Dr. Frank Tassone in Bad Education"},{name: "Lost Girls",opis:"The true story of a mother’s search for her missing child, Netflix’s Lost Girls is a clear-eyed and moving expose about the many ways in which troubled young women are let down by parents, police and society at large. Using Robert Kolker’s book"}, {name: "Young Ahmed", opis: "Jean-Pierre and Luc Dardenne gaze into the dark heart of religious fanaticism in Young Ahmed, a drama that’s all the more chilling for proffering no easy answers. By the time the filmmakers’ story begins, urban 13-year-old Ahmed (newcomer Idir Ben Addi) has already been indoctrinated by a jihad-encouraging imam (Othmane Moumen)."}, {name: "Aviva",opis: "multifaceted nature of gender identity in fittingly diverse fashion, depicting the highs and lows of a couple’s relationship via narrative and modern-dance means – as well as by having both a man and a woman play each of its protagonists,"}, {name:"Emma", opis:"“Handsome, clever and rich” is how Emma’s tagline describes its matchmaking heroine (Anya Taylor-Joy), but it’s also an apt summation of director Autumn de Wilde’s Jane Austen adaptation, which is energized by meticulous style,"}];
+            var names=new Array();
+            for(var i in films){
+              names.push(films[i].name);
+            }
+            $("input").autocomplete({
+                source:names
+            });
+            $("span").mouseleave(function () {
+               var rez=$("input").val();
+               for (var i in films ){
+                    if(films[i].name==rez){
+                        tekst=films[i].opis;
+                        $("#emptu").text(tekst)
+                    }
+               }
+            })
+
+        });
+
+    </script>
+</head>
+<body>
+<span>
+<input type="text" class="ui-autocomplete">
+<br>
+<div id="emptu">  </div>
+</span>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .green{
+            color: green;
+        }
+        .blue{
+            color: blue;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+           $("#orderlist li").addClass("blue");
+        })
+    </script>
+</head>
+<body>
+<input type="submit" value="First button">
+<input type="submit" value="Secound button">
+<ol id="orderlist">
+    <li>First element</li>
+    <li>Secound element</li>
+    <li>Thired element</li>
+</ol>
+<ol>
+    <li>First element,secound list</li>
+    <li>Secound element,secound list</li>
+    <li>Thired element,secound list</li>
+    <ul>
+        <li>Child one</li>
+        <li>Child two</li>
+    </ul>
+</ol>
+</body>
+</html>

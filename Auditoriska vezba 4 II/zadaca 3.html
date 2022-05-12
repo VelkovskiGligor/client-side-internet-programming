@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <style>
+        ul{
+            list-style-type: none;
+        }
+        li{
+            width: 400px;
+            height: 10px;
+            padding: 10px;
+        }
+        .selectable .ui-selectee{
+            background: white;
+            color: black;
+        }
+       .selectable .ui-selected{
+            background: #eb8f00;
+            color: white;
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var date=[
+                {
+                    ime:"Oblivion",
+                    opis:"A veteran assigned to extract Earth's remaining resources begins to question what he knows about his mission and himself."
+                },
+                {
+                    ime:"Ender's Game",
+                    opis: "Young Ender Wiggin is recruited by the International Military to lead the fight against the Formics, a genocidal alien race which nearly annihilated the human race in a previous invasion."
+                },
+                {
+                    ime:"Elysium",
+                    opis:"In the year 2154, the very wealthy live on a man-made space station while the rest of the population resides on a ruined Earth. A man takes on a mission that could bring equality to the polarized worlds."
+                },
+                {
+                    ime:"Edge of Tomorrow",
+                    opis:"A military officer is brought into an alien war against an extraterrestrial enemy who can reset the day and know the future. When this officer is enabled with the same power, he teams up with a Special Forces warrior to try and end the war."
+                }
+            ];
+            //nadoleee
+            $("#vtor").hide();
+            for (var i=0;i<date.length;i++){
+                var el="<li class='ui-widget-content a'>"+date[i].ime+"</li>";
+                $("#prv ul").append(el);
+
+            }
+            var index=-1;
+            $("li").mousedown(function (){
+                $("#prv").hide();
+                $("#vtor").show();
+                var tekst=$(this).text();
+                for (var i=0;i<date.length;i++){
+                    if(tekst== date[i].ime){
+                        index=i;
+                        $("#ime").text(date[i].ime);
+                        $("#opis").text(date[i].opis);
+                    }
+                }
+            });
+            $("#top").click(function () {
+                $("#vtor").hide();
+                $("#prv").show();
+            });
+            $("#back").click(function () {
+                if(index!=0){
+                    index--;
+                }
+
+                $("#ime").text(date[index].ime);
+                $("#opis").text(date[index].opis);
+            });
+            $("#next").click(function () {
+                if(index<date.length-1){
+                    index++;
+                }
+
+                $("#ime").text(date[index].ime);
+                $("#opis").text(date[index].opis);
+            });
+
+            $("ul").selectable();
+        })
+    </script>
+</head>
+<body>
+
+<div id="prv">
+    <ul class="selectable">
+
+    </ul>
+</div>
+
+
+<div id="vtor">
+    <input type="submit" value="back" id="back">  <input type="submit" value="top" id="top">  <input type="submit" value="next" id="next">
+    <h3>Ime</h3><br>
+    <span style="display: block;width: 200px;border: 1px solid black" id="ime"></span>
+    <h3>opis</h3><br>
+    <span style="display: block;width: 200px;border: 1px solid black" id="opis"></span>
+
+</div>
+
+</body>
+</html>

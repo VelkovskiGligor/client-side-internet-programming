@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+    #nav{
+        height: 100px;
+        width: 400px;
+        background-color: yellow;
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+    #nav input{
+        margin-right: 10px;
+        height: 30px;
+        width: 120px;
+    }
+    .a{
+        width: 400px;
+        background-color: #1c94c4;
+        padding: 10px;
+    }
+</style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".a").hide();
+            $("input").click(function () {
+                $(".a").hide();
+                var title=$(this).attr("title");
+                $("#"+title).toggle()
+            })
+
+
+        })
+    </script>
+</head>
+<body>
+<div id="nav">
+    <h3>Custom tab</h3>
+    <input type="submit" title="prv" value="Open Start">
+    <input type="submit" title="vtor" value="Connect">
+    <input type="submit"  title="tret" value="Pin apps">
+</div>
+<div id="prv" class="a">
+    Open Start by swiping in from the
+    right edge of the screen and then tapping Start.
+    (Or, if you're using a mouse, point to the lower-left corner of the screen,
+    move your mouse all the way into the corner, and then click Start.)
+    To customize Start, swipe up from the bottom edge and tap Customize.
+    (If you're using a mouse, right-click anywhere on the screen and click Customize.)
+    From here you can organize the Start screen however you like by moving tiles around,
+    changing tile sizes, and naming groups of tiles.
+</div>
+<div id="vtor" class="a">
+    When you connect a device to your PC, such as a printer,
+    mouse, or keyboard, Windows automatically tries to install
+    the correct driver for your device. A driver is software
+    that a device uses to work with your PC. Every device needs a
+    driver to work with your PC. If Windows can't find a driver
+    for the device, here are several suggestions you can try.
+    If you're trying to add a wireless device or a device on a network,
+    but Windows isn't finding it, see Why isn't Windows finding my wireless device?
+</div>
+<div id="tret" class="a">
+    You can pin apps, websites, people, and folders to
+    Start to easily get to what you use most.
+    Tiles and notifications show what�s new so you
+    can get important info and updates at a glance.
+    From Start, you don't have to bring up the charms to
+    begin a search�start typing to search for what you want.
+    You can choose results from your apps, files, PC settings,
+    and Bing.To see a list of all apps on your PC from Start,
+    slide up from the middle of the screen or use
+    the mouse to click the down arrow in the bottom left corner.
+    To pin an app to Start select the app by pressing and holding
+    or right clicking the tile, then tap or click Pin to Start.
+    To customize Start, swipe up from the bottom edge and tap Customize.
+    (If you're using a mouse, right-click anywhere on the screen and click Customize.)
+    From here you can organize the Start screen however you like by moving tiles around,
+    changing tile sizes, and naming groups of tiles
+</div>
+</body>
+</html>

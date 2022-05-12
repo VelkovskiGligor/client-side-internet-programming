@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+           var dialog=$("#dialog").dialog({
+               autoOpen:true,
+               buttons:{
+                   ok:function () {
+                       $(this).dialog("close")
+                   }
+               }
+
+           },{
+
+            });
+            dialog.dialog("open");
+        });
+    </script>
+</head>
+<body>
+
+<p>
+    Sed vel diam id libero <a href="http://example.com">rutrum convallis</a>.
+    Donec aliquet leo vel magna. Phasellus rhoncus faucibus ante. Etiam bibendum,
+    enim faucibus aliquet rhoncus, arcu felis ultricies neque, sit amet auctor elit eros a lectus.
+</p>
+<div id="dialog" title="Donwload complite!">
+    <p>
+    <span class="ui-icon ui-icon-circle-check">
+    </span>
+    Your files have downloaded successfully into the
+    My Downloads folder.
+    </p>
+    <p>
+        Currently using <b>36% of your storage space</b>.
+    </p>
+</div>
+</body>
+</html>

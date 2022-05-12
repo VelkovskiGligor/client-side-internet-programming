@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" language="JavaScript1.5">
+        function entre(x) {
+            var el=document.getElementById(x);
+            el.setAttribute("id","here");
+        }
+
+        function leave(x) {
+    console.log("HI")
+            var el=document.getElementById(x);
+            el.setAttribute("id","first");
+        }
+        function goo(x) {
+            var el=document.getElementById(x);
+            el.setAttribute("id","here");
+        }
+        function nazad(x) {
+         var el=document.getElementById(x);
+        el.setAttribute("id","sec");
+        }
+
+    </script>
+    <style type="text/css">
+        #here{
+            background-color: aqua;
+            color: red;
+        }
+        #first{
+            background-color: gold;
+            color: cadetblue;
+        }
+        #sec{
+            background-color: gold;
+            color: cadetblue;
+        }
+        .as{
+            background-color: black;
+            color: black;
+        }
+
+
+    </style>
+</head>
+<body>
+<form>
+    <input class="as" id="first" value="Go To FINKI" type="submit" onmouseover="entre('first')" onmouseleave="leave('here')">
+    <input class="as"   id="sec" value="Go To W3Scools" type="submit" onmouseover="goo('sec')" onmouseleave="nazad('here')">
+
+</form>
+</body>
+</html>

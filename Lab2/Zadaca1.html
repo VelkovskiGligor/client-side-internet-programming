@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .hid{
+            display: none;
+        }
+        div{
+            width: 360px;
+        }
+        #cutum{
+            width: 360px;
+            background-color: yellow;
+            height:70px;
+            border: black 1px solid;
+            border-bottom: black 2px solid;
+        }
+        span,label{
+            margin-left: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        input{
+            width: 110px;
+            font-style: italic;
+        }
+        .show{
+            display: inline-block;
+            background-color:lightskyblue;
+            border: 1px black solid;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $("#prv").click(function () {
+              $("div[name=sec]").each(function () {
+                  $(this).removeClass("show");
+                  $(this).addClass("hid")
+              });
+              $("div[name=sec]").eq(0).addClass("show")
+           });
+            $("#vtor").click(function () {
+                $("div[name=sec]").each(function () {
+                    $(this).removeClass("show");
+                    $(this).addClass("hid")
+                });
+                $("div[name=sec]").eq(1).addClass("show")
+            });
+            $("#tret").click(function () {
+                $("div[name=sec]").each(function () {
+                    $(this).removeClass("show");
+                    $(this).addClass("hid")
+                });
+                $("div[name=sec]").eq(2).addClass("show")
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+        <div>
+            <div id="cutum">
+                <br>
+                <span>Custum tab</span><br>
+                <label>
+                    <input type="submit" value="Open Start" id="prv">
+                    <input type="submit" value="Connect" id="vtor">
+                    <input type="submit" value="Pin apps" id="tret">
+                </label>
+
+            </div>
+            <div name="sec" class="hid">Open Start by swiping in from the right edge of the screen and then tapping Start. (Or, if you're using a mouse, point to the lower-left corner of the screen, move your mouse all the way into the corner, and then click Start.) To customize Start, swipe up from the bottom edge and tap Customize. (If you're using a mouse, right-click anywhere on the screen and click Customize.) From here you can organize the Start screen however you like by moving tiles around, changing tile sizes, and naming groups of tiles.</div>
+            <div name="sec" class="hid">When you connect a device to your PC, such as a printer, mouse, or keyboard, Windows automatically tries to install the correct driver for your device. A driver is software that a device uses to work with your PC. Every device needs a driver to work with your PC. If Windows can't find a driver for the device, here are several suggestions you can try. If you're trying to add a wireless device or a device on a network, but Windows isn't finding it, see Why isn't Windows finding my wireless device?</div>
+            <div  name="sec" class="hid">You can pin apps, websites, people, and folders to Start to easily get to what you use most. Tiles and notifications show what�s new so you can get important info and updates at a glance. From Start, you don't have to bring up the charms to begin a search�start typing to search for what you want. You can choose results from your apps, files, PC settings, and Bing.To see a list of all apps on your PC from Start, slide up from the middle of the screen or use the mouse to click the down arrow in the bottom left corner. To pin an app to Start select the app by pressing and holding or right clicking the tile, then tap or click Pin to Start. To customize Start, swipe up from the bottom edge and tap Customize. (If you're using a mouse, right-click anywhere on the screen and click Customize.) From here you can organize the Start screen however you like by moving tiles around, changing tile sizes, and naming groups of tiles.</div>
+        </div>
+</body>
+</html>

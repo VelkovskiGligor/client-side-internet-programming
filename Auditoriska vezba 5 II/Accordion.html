@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Accordation").accordion({
+                collapse:false,
+                active:true
+            });
+            $(".ui-accordion-header").click(function () {
+                $(this).next().slideToggle();
+            })
+        })
+    </script>
+    <style>
+        #Accordation{
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+ <div id="Accordation">
+    <h1 class="ui-accordion-header">First</h1>
+     <div>prvprvprvprvprvprv</div>
+
+
+
+     <h1 class="ui-accordion-header">Secound</h1>
+     <div>VtorVtorVtorVtorVtor</div>
+
+
+
+     <h1 class="ui-accordion-header">Third</h1>
+     <div>TretTretTretTretTret</div>
+ </div>
+</body>
+</html>

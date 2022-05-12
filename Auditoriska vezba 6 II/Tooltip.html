@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #form{
+            height: 200px;
+            width: 400px;
+            background-color: #aaaaaa;
+            padding: 20px;
+            font-size: 22px;
+        }
+        div label span{
+            display: inline-block;
+            width: 100px;
+        }
+         input{
+             height: 20px;
+         }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).tooltip({
+                items:"img,[title],[data-geo]",
+                content:function () {
+                    var el=$(this);
+                    if(el.is("img")){
+                        return el.attr("alt")
+                    }else if(el.is("[title]")){
+                        return el.attr("title")
+                    }else if(el.is("[data-geo]")){
+                        return el.attr("data-geo")
+                    }
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="form">
+
+    <label><span>First name</span><input type="text" title="Enter your name"></label><br>
+    <label><span>Last name</span><input type="text" title="Enter last name"></label><br>
+    <label><span>E-Mail</span><input type="text" title="Enter your E-Mail"></label><br>
+    <h2>St.Stephen's Cathedral</h2>
+    <h3><a href="http://maps.google.com/maps?q=vienna,+austria&amp;z=11" data-geo="data-geo">Vienna, Austria</a></h3>
+</div>
+<div class="ui-widget photo">
+    <div class="ui-widget-header ui-corner-all">
+        <h2>St. Stephen's Cathedral</h2>
+        <h3><a href="http://maps.google.com/maps?q=vienna,+austria&amp;z=11" data-geo="data-geo">Vienna, Austria</a></h3>
+    </div>
+
+</div>
+</body>
+</html>

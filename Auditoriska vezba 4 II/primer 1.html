@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        nav{
+            width: 100%;
+            height: 40px;
+            background-color: #1c94c4;
+            border-bottom: 2px blue solid;
+        }
+        nav ul{
+            width: 100%;
+            height: 40px;
+        }
+        nav ul li{
+            display: inline-block;
+            margin-right: 30px;
+            padding: 5px;
+            border-left: #fdf5ce 1px solid;
+        }
+        nav ul li:first-child{
+            margin-left: 300px;
+            border-left:0;
+        }
+
+
+        a{
+             text-decoration: none;
+            font-size: 25px;
+            font-family: italic;
+            color: black;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("div").hide();
+            $("div").eq(0).show();
+            $("a").click(function () {
+                var title=$(this).attr("title");
+                $("div").hide();
+                $("#"+title).show();
+            })
+        })
+    </script>
+</head>
+
+<body>
+<nav >
+    <ul>
+        <li><a title="a" href="#">About use</a></li>
+        <li><a title="b" href="#">Students </a></li>
+        <li><a title="c" href="#">Istrazuvanje</a></li>
+        <li><a title="d" href="#">Zaednica</a></li>
+    </ul>
+</nav>
+<br>
+<br>
+<div style="text-align: center" id="a">Za nas-sodrzina</div>
+<div style="text-align: center" id="b">Students-sodrzina</div>
+<div style="text-align: center" id="c">Istrazuvanje sodrzina</div>
+<div  style="text-align: center" id="d">Zaednica-sodrzina</div>
+</body>
+</html>

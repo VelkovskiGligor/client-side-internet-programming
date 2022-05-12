@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#delete").click(function () {
+                $('[type="checkbox"]:checked').parent("label").remove();
+            });
+            $("#restore").click(function () {
+                $("#mess").html("<label><input type=\"checkbox\">Messange1</label><br>\n" +
+                    "<label><input type=\"checkbox\">Messange2</label><br>\n" +
+                    "<label><input type=\"checkbox\">Messange3</label><br>\n" +
+                    "<label><input type=\"checkbox\">Messange4</label><br>\n" +
+                    "<label><input type=\"checkbox\">Messange5</label><br>\n" +
+                    "<label><input type=\"checkbox\">Messange6</label><br>\n" +
+                    "<label><input type=\"checkbox\">Messange7</label><br>\n" +
+                    "<label><input type=\"checkbox\">Messange8</label><br>")
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="submit" id="delete" value="delete"><input id="restore" type="submit" value="restore"><br>
+<div id="mess">
+<label><input type="checkbox">Messange1</label><br>
+<label><input type="checkbox">Messange2</label><br>
+<label><input type="checkbox">Messange3</label><br>
+<label><input type="checkbox">Messange4</label><br>
+<label><input type="checkbox">Messange5</label><br>
+<label><input type="checkbox">Messange6</label><br>
+<label><input type="checkbox">Messange7</label><br>
+<label><input type="checkbox">Messange8</label><br>
+</div>
+</body>
+</html>

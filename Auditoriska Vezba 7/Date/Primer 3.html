@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primer3</title>
+    <title>Date2</title>
+    <script type="text/javascript" src="../../jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../../jquery/jquery-ui.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $("#date").datepicker({
+                appendText:"dd mm yy",
+               dateFormat:"dd/mm/yy",
+               changeMonth:true,//na formata ima select lista za promena na mesec
+               changeYear:true,// na formata ima select lista za promena na godina
+           })
+        });
+    </script>
+</head>
+<body>
+<p>Enter date <input id="date"></p>
+</body>
+</html>

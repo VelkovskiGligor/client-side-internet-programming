@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style type="text/css">
+
+        .neselektiran{
+            background-color: white;
+            color: black;
+        }
+        .selektiran{
+             background-color: #eb8f00;
+             color: white;
+         }
+        ul li{
+            cursor: pointer;
+            margin: 3px;
+            list-style-type: none;
+            border: 1px #1c94c4 solid;
+            height: 20px;
+            width: 400px;
+            padding: 5px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var apikey = "a6592a8d";
+
+
+            var newFilm;
+
+            var dialog=$("#dialog").dialog({
+                autoOpen:false,
+                modal:true,
+                buttons:[{
+                    text:"Ok",
+                    margin:"5px",
+                    click:function(){
+                        newFilm=$("#tekst").val();
+                        $("#select").append("<li class='a neselektiran'>"+newFilm+"</li>");
+                        $("#dialog").dialog('close');
+                    }
+                },{
+                    text:'Cancel',
+                    click:function(){
+                        $("#dialog").dialog('close');
+                    }
+                }]
+            });
+
+
+            $("#add").click(function(){
+                dialog.dialog("open");
+            });
+
+            $("#select .a").click(function(){
+                $("ul li").each(function () {
+                    console.log("HA")
+                    $(this).removeClass("selektiran");
+                    $(this).addClass("neselektiran");
+
+                });
+
+                $(this).addClass("selektiran")
+                console.log("F")
+                var naslov=$(this).text();
+                console.log(naslov)
+                getMovie(naslov);
+            });
+
+            function getMovie(title) {
+                $.ajax({
+                    url: "http://omdbapi.com/?t=" + title + "&apikey=" + apikey,
+                    dataType: "json",
+                    success: function (data) {
+                        var title = data.Title;
+                        alert(data);
+                        var rating = data.imdbRating;
+                        var imdbID = data.imdbID;
+                        var director = data.Director;
+                        var actors = data.Actors;
+                        var img = data.Poster;
+                        $("#Title").html(title);
+                        $("#IbmID").html(rating);
+                        $("#Rating").html(imdbID);
+                        $("#lblActors").html(actors);
+                        $("#Director").html(title);
+                        $("#Actors").attr('src', img);
+                    }
+
+                })
+            }
+        });
+    </script>
+</head>
+<body>
+<input type="submit" value="Add movie" id="add">
+<ul id="select">
+    <li class="a ">Oblivion</li>
+    <li class="a ">Elysium</li>
+    <li class=" a ">Avatar</li>
+    <li class=" a ">Inception</li>
+</ul>
+<div>
+    <b>Title:</b>   <label id="Title"></label><br>
+    <b>ImdbID:</b>  <label id="IbmID"></label><br>
+    <b>Rating :</b> <label id="Rating"></label><br>
+    <b>Director :</b>  <label id="Director"></label><br>
+    <b>Actors :</b>  <label id="Actors"></label><br>
+</div>
+<div id="dialog" title="Donwload complite">
+    <p>Enter title of movie.</p>
+    <input type="text" id="tekst">
+
+</div>
+
+</body>
+</html>

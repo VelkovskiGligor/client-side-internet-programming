@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style type="text/css">
+div{
+   position: absolute;
+    left: 650px;
+    top: 300px;
+    font-size: 40px;
+}
+</style>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var vreme=new Date();
+           var saati=vreme.getHours();
+           var min=vreme.getMinutes();
+           var sec=vreme.getSeconds();
+           saati=parseInt(saati);
+            min=parseInt(min);
+           sec=parseInt(sec);
+           console.log(saati);
+            console.log(min);
+            while (1){
+                if (sec==0){
+                    min=min-1;
+
+                }
+                if (min==0 && sec==0){
+                    saati=saati-1;
+                }
+                if (saati==0 && min==0 && sec==0){
+                        $("div").append("Vremeto istece!")
+                    break;
+                }
+                $("div").html(saati+":"+min+":"+sec);
+                $("div").animate(function () {
+
+                },1000)
+            }
+
+
+        });
+
+
+    </script>
+</head>
+<body>
+<div></div>
+</body>
+</html>

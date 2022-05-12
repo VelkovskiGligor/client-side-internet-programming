@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <style type="text/css">
+        span{
+            margin: 5px;
+            padding: 5px;
+        }
+        .active{
+            background-color: #1c94c4;
+            color: white;
+        }
+        .passiv{
+            background-color: lightgray;
+            color: darkgray;
+        }
+        .activee{
+            display: inline-block;
+        }
+         .passivv{
+            display:none;
+
+        }
+      #forma div{
+          width: 300px;
+
+
+        }
+     form div label{
+         display: inline-block;
+         margin: 5px;
+         width: 100px;
+      }
+        .text{
+            position: absolute;
+            left: 120px;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            index=0;
+            $("#next").click(function () {
+                index++;
+                console.log(index);
+                if(index == 1){
+                   $("#status span").eq(index).attr("class","active");
+                    $("#status span").eq(index-1).add("class","passiv");
+                    $("h3").eq(index-1).attr("class","passivv");
+                    $("h3").eq(index).attr("class","activv");
+                    $("form div").eq(index-1).hide();
+                    $("form div").eq(index).show();
+                }
+               else if(index == 2){
+                    $("#status span").eq(index).attr("class","active");
+                    $("#status span").eq(index-1).attr("class","passiv");
+                    $("h3").eq(index-1).attr("class","passivv");
+                    $("h3").eq(index).attr("class","activv");
+                    $("form div").eq(index-1).hide();
+                    $("form div").eq(index).show();
+
+                }
+                else if(index == 3){
+                    $("#status span").eq(index).attr("class","active");
+                    $("#status span").eq(index-1).attr("class","passiv");
+                    $("h3").eq(index-1).attr("class","passivv");
+                    $("h3").eq(index).attr("class","activv");
+                    $("form div").eq(index-1).hide();
+                    $("form div").eq(index).show();
+
+                }
+                else if (index==4)
+                    alert("done!");
+            });
+            $("#prev").click(function () {
+                        if(index!=0){
+                            index--
+                        }
+
+                if(index == 0){
+                    $("#status span").eq(index).attr("class","active");
+                    $("#status span").eq(index+1).attr("class","passiv");
+                    $("h3").eq(index+1).attr("class","passivv");
+                    $("h3").eq(index).attr("class","activv");
+                    $("form div").eq(index+1).hide();
+                    $("form div").eq(index).show();
+                }
+                else if(index == 1){
+                    $("#status span").eq(index).attr("class","active");
+                    $("#status span").eq(index+1).attr("class","passiv");
+                    $("h3").eq(index+1).attr("class","passivv");
+                    $("h3").eq(index).attr("class","activv");
+                    $("form div").eq(index+1).hide();
+                    $("form div").eq(index).show();
+
+                }
+                else if(index == 2){
+                    $("#status span").eq(index).attr("class","active");
+                    $("#status span").eq(index+1).attr("class","passiv");
+                    $("h3").eq(index+1).attr("class","passivv");
+                    $("h3").eq(index).attr("class","activv");
+                    $("form div").eq(index+1).hide();
+                    $("form div").eq(index).show();
+
+                }
+
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<div id="status">
+    <span id="Acount" class="active">Acount</span>
+    <span id="Profile" class="passiv">Profile</span>
+    <span id="Hints" class="passiv">Hints</span>
+    <span id="Finish" class="passiv">Finish</span>
+</div>
+<h3 class="activee">Acount</h3>
+<h3  class="passivv">Profile</h3>
+<h3 class="passivv">Hints</h3>
+<h3 class="passivv">Finish</h3>
+
+<form id="forma" style="margin: 10px;background-color: #8c99a4;width: 350px;height:200px" >
+    <div class="activee">
+        <label>User name <input type="text" class="text"> </label><br>
+        <label> Password<input type="text" class="text"></label><br>
+        <label>Confirm <br>Password<input type="text" class="text"></label><br>
+
+
+    </div>
+    <div class="passivv">
+        <label>First name<input type="text" class="text"> </label><br>
+        <label>Last name<input type="text" class="text"> </label><br>
+        <label>Email<input type="text" class="text"></label><br>
+        <label>Address<br>Password<input type="text" class="text"></label><br>
+    </div>
+    <div class="passivv">
+        <ol>
+            <li>Foo</li>
+            <li>Bar</li>
+            <li>Foobar</li>
+        </ol>
+    </div>
+    <div class="passivv">
+        <input type="checkbox"> I agree with the Terms and Conditions.
+    </div>
+</form>
+<span> <input type="submit" value="prev" id="prev" style="width: 100px"> </span>
+<span><input type="submit" id="next" value="next" style="width: 100px"></span>
+</body>
+</html>

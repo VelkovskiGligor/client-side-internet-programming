@@ -1,0 +1,69 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style type="text/css">
+            table,tr,th,td{
+                border: gold 1px solid;
+            }
+            th,tr,td{
+                width: 200px;
+            }
+            span{
+                display: inline-block;
+                width: 120px;
+            }
+            div{
+                margin: 10px;
+            }
+        </style>
+        <script type="text/javascript" src="../jquery-3.4.1.js"></script>
+        <script type="text/javascript" src="../jquery/jquery-ui.js" ></script>
+       <link rel="stylesheet" href="../jquery/jquery-ui.css">
+        <script type="text/javascript">
+            $(document).ready(function () {
+               var dial=$("#dialog").dialog({
+                    autoOpen:false,
+                    modal:true,
+                   buttons:[{
+                       text:"Dodaj kniga",
+                       click: function () {
+                           var avtor = $("#avtor").val();
+                           var ime = $("#name").val();
+                           var comm = $("#commentar").val();
+                           $("table").append("<tr>" + "<td>" + ime + "</td>" + "<td>" + avtor + "</td>" + "<td>" + comm + "</td>")
+                            $(this).dialog("close");
+                       }
+                   },{
+                   text:'Otkazi',
+                   click:function () {
+                       $("#dialog").dialog("close");
+                   }
+                         }]
+               });
+                $("#add1").click(function () {
+                        dial.dialog('open');
+                });
+            });
+
+
+
+        </script>
+    </head>
+    <body>
+    <input type="submit" value="Add book" id="add1" style="width: 130px">
+    <table>
+        <tr>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Comentar</th>
+        </tr>
+            <div id="dialog">
+                <label><span>Author  </span><input type="text" id="avtor" class="text ui-widget-content ui-corner-all"></label><br>
+                <label><span>Name </span> <input type="text" id="name" class="text ui-widget-content ui-corner-all"></label><br>
+                <label><span>Commentar</span> <textarea id="commentar"></textarea></label><br>
+            </div>
+    </table>
+    </body>
+    </html>

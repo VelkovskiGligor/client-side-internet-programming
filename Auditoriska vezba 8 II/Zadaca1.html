@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .a{
+            display: inline-block;
+            width: 150px;
+        }
+        #forma{
+            padding: 20px;
+            margin-left: 20px;
+            margin-top: 20px;
+            border: 1px solid black;
+            width: 500px;
+        }
+        #forma div{
+            border: 1px solid lightskyblue;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .b{
+            margin-left: 150px;
+        }
+
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var vrednost=0;
+            $("#datum").datepicker({
+                changeMonth:true,
+                changeYear:true,
+                dateFormat:"dd/mm/yy",
+                dayNamesMin:["Пон","Вто","Сре","Чет","Пет","Суб","Нед"],
+                monthNames:["Јан","Феб","Мар","Апр","Мај","Јун","Јул","Авг","Сеп","Окт","Нов","Дек"],
+                monthNamesShort:["Јан","Феб","Мар","Апр","Мај","Јун","Јул","Авг","Сеп","Окт","Нов","Дек"],
+            });
+            $("#kopce").click(function () {
+                var ime=$("#name").val();
+                if(ime==""){
+                    $("#spanname").text("Ова поле е задолжително!")
+                }
+                var mail=$("#email").val();
+                if(mail==""){
+                    $("#spanmail").text("Ова поле е задолжително!")
+                }
+                var pass=$("#password").val();
+                if(pass==""){
+                    $("#spanpass").text("Ова поле е задолжително!")
+                }
+                var conf=$("#confirm").val();
+                if(conf==""){
+                    $("#spanconfirm").text("Ова поле е задолжително!")
+                }
+                var date=$("#datum").val();
+                if(date==""){
+                    $("#spandatum").text("Ова поле е задолжително!")
+                }
+                    $("input").val("");
+                alert("Успешно се регистриравте.")
+            });
+            $("#progres").progressbar({
+                value:0
+            });
+            $("input").click(function () {
+                var ime=$("#name").val();
+                if(ime!=""){
+                    vrednost=vrednost+20;
+                }
+                var mail=$("#email").val();
+                if(mail!=""){
+                    vrednost=vrednost+20;
+                }
+                var pass=$("#password").val();
+                if(pass!=""){
+                    vrednost=vrednost+20;
+                }
+                var conf=$("#confirm").val();
+                if(conf!=""){
+                    vrednost=vrednost+20;
+                }
+                var date=$("#datum").val();
+                if(date!=""){
+                    vrednost=vrednost+20;
+                }
+                $("#progres").progressbar({
+                    value: vrednost
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="forma">
+        <div id="generalni">
+            <h3>Лични податоци</h3><br>
+            <label><span class="a">Kорисничко име:</span><input type="text" id="name"></label><br>
+            <span class="b" id="spanname" style="color: red;font-family: italic"></span><br>
+            <label><span class="a">Е-маил:</span><input type="text" id="email"></label><br>
+            <span class="b" id="spanmail" style="color: red;font-family: italic"></span><br>
+            <label><span class="a">Лозинка:</span><input type="password" id="password"></label><br>
+            <span  class="b" id="spanpass" style="color: red;font-family: italic"></span><br>
+            <label><span class="a">потврда за лозинка:</span><input type="password" id="confirm"></label><br>
+            <span class="b" id="spanconfirm" style="color: red;font-family: italic"></span><br>
+        </div>
+        <div id="licni">
+            <h3>Лични податоци</h3><br>
+            <label><span class="a">Име:</span><input type="text" id="ime"></label><br>
+            <label><span class="a">Презиме:</span><input type="text" id="prezime"></label><br>
+            <label><span class="a">Датум:</span><input type="text" id="datum" placeholder="Кликнете за да внесете датум"></label><br>
+            <span class="b" id="spandatum" style="font-family: italic;color: red"></span><br>
+            <label><span class="a">Пол:</span><input type="radio" value="masko" >Машко <input type="radio" value="zensko">Женско</label><br>
+
+        </div>
+        <div id="film">
+            <h3>Податоци за категории на филмови</h3><br>
+            <input type="checkbox" value="Action">Action<br>
+            <input type="checkbox" value="Animation">Animation<br>
+            <input type="checkbox" value="Comedy">Comedy<br>
+            <input type="checkbox" value="Crime">Crime<br>
+            <input type="checkbox" value="Drama">Drama<br>
+            <input type="checkbox" value="Fantasy">Fantasy<br>
+            <input type="checkbox" value="Musical">Musical<br>
+            <input type="checkbox" value="Romance">Romance<br>
+            <input type="checkbox" value="Horror">Horror<br>
+            <input type="checkbox" value="Sci-Fi">Sci-Fi<br>
+            <input type="checkbox" value="Thriller">Thriller<br>
+        </div>
+    </div>
+<input type="submit" id="kopce" value="Регистритајте се" style="margin-left: 443px;height: 25px;margin-top: 5px;border: 1px solid black"><div id="progres"style="height: 30px;width: 300px;margin-left: 260px"></div>
+
+</body>
+</html>

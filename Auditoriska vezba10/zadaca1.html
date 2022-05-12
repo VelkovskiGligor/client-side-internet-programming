@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca1</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style type="text/css">
+        #form{
+            border:1px solid gray;
+            height: 350px;
+            padding-left: 5px;
+            padding-right:5px ;
+
+        }
+        nav{
+            background-color: lightgray;
+            height: 50px;
+            border: 1px gray solid;
+            margin-top: 10px;
+        }
+        nav ul li{
+            display: inline-block;
+        }
+        nav ul input{
+            margin-left: -30px;
+            margin-right: 32px;
+            background-color:white;
+            width: 130px;
+            height: 35px;
+            display: inline-block;
+            font-size: 20px;
+
+        }
+        .momentalni{
+            opacity: 100%;
+            border-bottom: 2px white solid;
+
+        }
+        .pominato{
+                opacity: 50%;
+        }
+
+        #prv{
+            margin-top: 10px;
+            height: 200px;
+            width: 400px;
+            display: inline-block;
+            font-size: 20px;
+            padding-left: 50px;
+            position: static;
+        }
+        #vtor{
+            margin-top: 10px;
+            width: 500px;
+            display: inline-block;
+            border-left: 1px solid gray;
+            font-size: 20px;
+            position: static;
+
+        }
+
+        #kopcinja{
+            background-color: #eb8f00;
+            margin-top: 10px;
+            margin-left: 30px;
+            width: 480px;
+        }
+        #kopcinja input{
+            float: right;
+            margin-left: 10px;
+        }
+
+        #form div input{
+            width: 50px;
+            height: 25px;
+
+        }
+        #tret{
+            padding-top: 30px;
+            padding-left: 20px;
+        }
+
+
+
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tret").hide();
+            $(".a").css("height","15px");
+
+            $("#studenti").click(function () {
+                $(this).removeClass("pominato");
+                $(this).addClass("momentalni");
+                $("#ocenki").addClass("pominato");
+                $("#ocenki").removeClass("momentalni");
+                $("#prv").show();
+                $("#vtor").show();
+                $("#tret").hide();
+                $("#kopcinja").show()
+            });
+            $("#ocenki").click(function () {
+                $(this).removeClass("pominato");
+                $(this).addClass("momentalni");
+                $("#studenti").addClass("pominato");
+                $("#studenti").removeClass("momentalni");
+                $("#prv").hide();
+                $("#vtor").hide();
+                $("#tret").show();
+                $("#kopcinja").hide();
+            });
+            $(document).tooltip({
+                items:"img,input,[title]",
+                content:function () {
+                    var element=$(this);
+                    if(element.is("[title]")){
+                    return element.attr("title")}
+                }
+            });
+            $("#desno").click(function () {
+                var elements=$(".a:checked").parent();
+                var flag=1;
+                for(var i=0;i<elements.length;i++){
+                    //  console.log(elements[i])
+                    var poeni=$(elements).eq(i).attr("title");
+                    poeni=poeni.split(" ");
+                    poeni=poeni[1];
+                    if (poeni<50){
+                        alert("Избравте студент со помалку од 50 поени")
+                        flag=0
+                    }
+                }
+                if(flag==1) {
+                    $("#poseuvid").append(elements);
+                   $(".a").prop("checked", false);
+                }
+            });
+            $("#levo").click(function () {
+                var elements=$(".a:checked").parent();
+
+                    $("#preduvid").append(elements);
+                $(".a").prop("checked", false);
+
+            });
+
+            $(".x").eq(0).progressbar({
+                value:14.3
+            })
+            $(".x").eq(1).progressbar({
+                value:14.3
+            })
+            $(".x").eq(2).progressbar({
+                value:14.3
+            })
+        })
+    </script>
+
+</head>
+<body>
+<div id="form">
+    <nav>
+        <ul>
+            <li> <input type="submit" value="Студенти" id="studenti"></li>
+            <li> <input type="submit" value="Оценки" id="ocenki"></li>
+        </ul>
+    </nav>
+    <div id="prv">
+        <h2>Пред увид</h2>
+        <ul id="preduvid">
+            <li title="Poeni: 30 Indeks:11113"><input type="checkbox" class="a">Петре Петревски</li>
+            <li title="Poeni: 90 Indeks:11114"><input type="checkbox" class="a">Аце Ацевски</li>
+            <li title="Poeni: 100 Indeks:11115"><input type="checkbox" class="a">Мите Митрески</li>
+            <li title="Poeni: 85 Indeks:11117"><input type="checkbox" class="a">Мирко Мирковски</li>
+        </ul>
+
+    </div>
+    <div id="vtor">
+        <h2>Конечна листа на положени студенти</h2>
+        <ul id="poseuvid">
+            <li title="Poeni: 80 Indeks:11111"><input type="checkbox" class="a">Никола Николовски</li>
+            <li title="Poeni: 70 Indeks:11112"><input type="checkbox" class="a">Симона Симоноска</li>
+            <li title="Poeni: 60 Indeks:11116"> <input type="checkbox" class="a">Ристе Ристески</li>
+        </ul>
+
+    </div>
+    <div id="tret">
+        <div class="x" style="height: 30px;border: 1px gray solid;width:300px"> </div>
+        <b>Оценка 6: 14.3%</b><br>
+        <div class="x" style="height: 30px;border: 1px gray solid;width:300px"> </div>
+        <b> Оценка 7: 14.3%</b><br>
+        <div class="x" style="height: 30px;border: 1px gray solid;width:300px"> </div>
+        <b> Оценка 8: 14.3%</b><br>
+        <div class="x" style="height: 30px;border: 1px gray solid;width:300px"> </div>
+        <b>Оценка 9: 0.00%</b><br>
+        <div class="x" style="height: 30px;border: 1px gray solid;width:300px"> </div>
+        <b> Оценка 10: 0.00%</b><br>
+
+    </div>
+    <div id="kopcinja">
+        <input type="submit" value=">>" id="desno">
+        <input type="submit" value="<<" id="levo">
+    </div>
+</div>
+</body>
+</html>

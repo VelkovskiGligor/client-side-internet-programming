@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #forma{
+            padding: 10px;
+            border: 2px solid lightgray;
+            width: 500px;
+        }
+        #forma label{
+            margin-right: 5px;
+        }
+        #forma  label span{
+            display: inline-block;
+            width: 100px;
+        }
+        #forma label input{
+            margin-bottom: 5px;
+        }
+        ul{
+            width: 300px;
+            list-style-type: none;
+        }
+        ul li{
+            height: 25px;
+            padding: 5px;
+            font-size: 20px;
+        }
+        .ui-selectable .ui-widget-content{
+            background: white;
+            color: black;
+        }
+        .ui-selectable .ui-selected{
+            background: #e78f08;
+            color: white;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".ui-selectable").selectable();
+            $("#date").datepicker({
+                dateFormat:"dd/mm/yy"
+            });
+            $("#kopce").click(function () {
+                var ime=$("#ime").val();
+                var surname=$("#surname").val();
+                var password=$("#password").val();
+                var date=$("#date").val();
+                if(ime==""){
+                    $("#ime").css("border","2px solid red");
+                    $("#spanime").text("Insert a name!");
+                }
+                if(surname==""){
+                    $("#surname").css("border","2px solid red");
+                    $("#spansurname").text("Insert a surname!");
+                }
+                if(password==""){
+                    $("#password").css("border","2px solid red");
+                    $("#spanpassword").text("Insert a password!");
+                }
+                if(date==""){
+                    $("#date").css("border","2px solid red");
+                    $("#spandate").text("Insert a datum!");
+                }
+                if(ime!="" && password!="" &&surname!="" && date!=""){
+                    dial.dialog("open");
+                    $("#dialname").text(ime);
+                    $("#dialsurname").text(surname);
+                    $("#dialpassword").text(password);
+                    $("#dialdate").text(date)
+                    $(".ui-selectable .ui-selected").each(function () {
+                        $("#dialhobies").append($(this).text()+",")
+                    })
+                }
+
+
+            });
+            var dial=$("#dialog").dialog({
+                autoOpen:false
+            })
+        })
+    </script>
+</head>
+<body style="padding: 10px;font-family: italic">
+    <div id="forma">
+        <label><span class="a">Name:</span><input type="text" id="ime" placeholder="Enter your name"></label><span id="spanime" style="color: red"></span><br>
+        <label><span class="a">Surname:</span><input type="text" id="surname" placeholder="Enter your surname"></label><span id="spansurname" style="color: red"></span><br>
+        <label><span class="a">Password:</span><input type="password" id="password" placeholder="Enter your password"></label><span id="spanpassword" style="color: red"></span><br>
+        <label><span class="a">DateOfBirth:</span><input type="text" id="date" placeholder="Click to pick date"></label><span id="spandate" style="color: red"></span><br>
+        <h4>Select your hobbies</h4>
+        <ul class="ui-selectable">
+            <li class="ui-widget-content">Gamming</li>
+            <li class="ui-widget-content">Sports</li>
+            <li class="ui-widget-content">Watching Tv</li>
+            <li class="ui-widget-content">Sleeping</li>
+            <li class="ui-widget-content">Hiking</li>
+            <li class="ui-widget-content">Skiing</li>
+            <li class="ui-widget-content">Dancing</li>
+        </ul>
+        <input type="submit" id="kopce" value="Add my info">
+    </div>
+<div id="dialog" title="User info">
+    <p>Name: <span id="dialname"></span></p>
+    <p>Surname: <span id="dialsurname"></span></p>
+    <p>Password: <span id="dialpassword"></span></p>
+    <p>DateOfBirth :<span id="dialdate"></span></p>
+    <p>Hobbies: <span id="dialhobies"></span></p>
+</div>
+</body>
+</html>

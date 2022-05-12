@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        nav{
+            height: 70px;
+            width: 100%;
+            background-color: #1c94c4;
+        }
+        nav ul{
+            height: 100%;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul li{
+            padding-top: 10px;
+            display: inline-block;
+            font-size: 30px;
+            margin-right: 40px;
+            text-align: center;
+        }
+        nav ul li a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("li a").hover(function () {
+                $("li").css("opacity","50%");
+                $(this).css("zoom","120%");
+                $(this).parent("li").css("opacity","100%")
+            },function () {
+                $("li").css("opacity","100%")
+                $(this).css("zoom","100%")
+                $(this).parent("li").css("zoom","100%")
+            })
+        })
+    </script>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="http://foodanddrink.ca/fooddrink/index.shtml">food-and-drink</a></li>
+        <li><a href="https://www.overstock.com/Electronics/2/store.html">electronics</a></li>
+        <li><a href="http://www.bhg.com/">home-andgarden</a></li>
+        <li><a href="http://www.gsk.com/en-gb/about-us/">about us</a></li>
+        <li><a href="http://www.no-mans-sky.com/contact/">contact</a></li>
+    </ul>
+</nav>
+</body>
+</html>

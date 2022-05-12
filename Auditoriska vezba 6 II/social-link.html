@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul li{
+            display: inline-block;
+            margin: 10px;
+        }
+        div{
+            margin-top: 10px;
+            margin-left: 10px;
+            height: 50px;
+        }
+        strong{
+            position: absolute;
+            background-color: black;
+            color: white;
+            padding: 3px;
+            top: 3px;
+
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("strong").hide();
+            $("li").hover(function () {
+                $(this).find("strong").slideDown();
+                $("li").animate({
+                    opacity:"35%",
+                },100);
+
+                $(this).animate({
+                    opacity:"100%",
+                },50);
+
+
+            },function () {
+                $(this).find("strong").slideUp();
+                $("li").animate({
+                    opacity:"100%",
+                },1);
+            })
+        })
+    </script>
+
+</head>
+<body>
+<div id="icons" >
+    <ul>
+        <li><strong>Twitter</strong><a href=""><img src="./images/twitter.png"></a></li>
+        <li><strong>RSS</strong><a  href=""><img src="./images/rss.png"></a></li>
+        <li><strong>Reddit</strong><a  href=""><img src="./images/reddit.png"></a></li>
+        <li><strong>Linkedin</strong><a  href=""><img src="./images/linkedin.png"></a></li>
+        <li><strong>Flickr</strong><a  href=""><img src="./images/flickr.png"></a></li>
+        <li><strong>Facebook</strong><a  href=""><img src="./images/facebook.png"></a></li>
+        <li><strong>Digg</strong><a  href=""><img src="./images/digg.png"></a></li>
+        <li><strong>Delicious</strong><a  href=""><img src="./images/delicious.png"></a></li>
+    </ul>
+</div>
+</body>
+</html>

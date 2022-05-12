@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca1</title>
+    <script type="text/javascript" src="../jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <style type="text/css">
+        nav{
+            width: 700px;
+            height: 40px;
+            background-color: #455868;
+            margin-left: 100px;
+        }
+        nav ul li{
+            display: inline-block;
+            width: 150px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        #SonyStereo{
+
+            width: 100px;
+            height: 50px;
+        }
+        #SonyPortable{
+
+            width: 100px;
+            height: 50px;
+        }
+        #GPXPC332B{
+
+            width: 100px;
+            height: 50px;
+        }
+        #GPXPC301B{
+
+            width: 100px;
+            height: 50px;
+        }
+        #mixers li{
+            width: 100px;
+            height: 50px;
+        }
+        .projdeno{
+            color: white;
+            font-size: 30px;
+        }
+        .momentalni{
+            color: lightskyblue;
+            font-size: 40px;
+        }
+        ul{
+            border: 2px black solid;
+        }
+
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var player=[
+                {
+                    model:"GPX PC301B",
+                    price:"1200",
+                    photo:"<img src='CD%20player/GPX%20PC301B.jpg'>",
+                },
+                {
+                    model:"GPX PC332B",
+                    price:"1500",
+                    photo:"<img src='CD%20player/GPX%20PC332B.jpg'>",
+                },
+                {
+                    model:"Sony Portable",
+                    price:"1300",
+                    photo:"<img src='CD%20player/Sony%20Portable.jpg>",
+                },
+                {
+                    model:"Sony Stereo",
+                    price:"1400",
+                    photo:"<img src='CD%20player/Sony%20Stereo.jpg>",
+                }
+            ];
+            var mixer=[
+                {
+                    model:"Sony Mix MX301B",
+                    price:"2200",
+                    photo:"<img src='CD%20player/GPX%20PC301B.jpg'>",
+                },
+                {
+                    model:"Sony Mix MX332B",
+                    price:"1900",
+                    photo:"<img src='CD%20player/GPX%20PC332B.jpg'>",
+                },
+                {
+                    model:"Lg Mix Portable",
+                    price:"2000",
+                    photo:"<img src='CD%20player/Sony%20Portable.jpg>",
+                },
+                {
+                    model:"Slmsung  Mix Stereo",
+                    price:"2400",
+                    photo:"<img src='CD%20player/Sony%20Stereo.jpg>",
+                }
+            ];
+            $("#mixers").hide();
+
+            for(var i=0;i<player.length;i++){
+                var id=player[i].model;
+                id=id.split(" ");
+                id=id[0]+id[1];
+                console.log(id);
+                $("#players").append("<li id='"+id+"'> <b>" + player[i].model+"</b> price: " +player[i].price+"</li>");
+            }
+            for(var i=0;i<mixer.length;i++){
+                var id=mixer[i].model;
+                id=id.split(" ");
+                id=id[0]+id[1];
+                console.log(id);
+                $("#mixers").append("<li id='"+id+"'> <b>" + mixer[i].model+"</b> price: " +mixer[i].price+"</li>");
+            }
+
+           $("nav ul li").hover(function () {
+               $(this).css("font-size","40px");
+               $(this).css("color","lightskyblue");
+
+           },function () {
+               $(this).css("font-size","30px");
+               $(this).css("color","white");
+           });
+
+            $("nav ul li").click(function () {
+                $(this).css("font-size","40px");
+                $(this).css("color","lightskyblue");
+                 var klasa=$(this).attr("class");
+                 id="#"+klasa;
+                 $("#players").hide();
+                 $("#mixers").hide();
+                 $(id).show();
+
+
+            });
+            $("#players, #mixers").sortable({
+                connectWith: "#basket"
+            });
+
+            $("#basket").sortable();
+        });
+    </script>
+</head>
+<body>
+    <nav id="nav" >
+        <ul>
+            <li class="players">Player</li>
+            <li class="mixers ">Mixer</li>
+            <li class="basket">Basket</li>
+        </ul>
+    </nav>
+<ul id="players" class="a">
+
+
+</ul>
+<ul id="mixers" class="a"></ul>
+<ul id="basket" class="a"><h2>Fill me up!</h2></ul>
+</body>
+</html>

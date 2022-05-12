@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <script type="text/javascript" src="../jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.css">
+    <style type="text/css">
+        body{
+            margin: 10px;
+            background-image: url("background2.jpg");
+            background-repeat:repeat;
+        }
+        #form{
+            position: absolute;
+            left: 450px;
+            background-color: white;
+            width: 500px;
+            height: 790px;
+            border: solid 2px lightskyblue;
+        }
+        h1{
+            margin-left: 100px;
+        }
+        #form div{
+            border: lightskyblue solid 2px;
+            width: 400px;
+            padding: 10px;
+            margin-left: 40px;
+
+        }
+        p{
+            margin-left: 40px;
+            float: left;
+            display: inline-block;
+        }
+        label{
+            display: inline-block;
+        }
+        .span{
+            display: inline-block;
+            width: 200px;
+            margin-left: 10px;
+
+        }
+        #general{
+            border-bottom: 2px solid lightskyblue;
+        }
+        datepicker{
+            width: 200px;
+            height: 200px;
+        }
+        #tip{
+            height: 300px;
+        }
+        #progres{
+            display: block;
+            width: 200px;
+            height: 20px;
+            margin-left:40px;
+           border: 1px solid gray;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+             $("#date").datepicker({
+                    dateFormat:"D M yy",
+                    dayNamesMin:["Пон","Вто","Сре","Чет","Пет","Суб","Нед"],
+                    dayNamesShort:["Пон","Вто","Сре","Чет","Пет","Суб","Нед"],
+                    numberOfMonths:1,
+                 monthNames:["Јануари","Фебруари","Март","Април","Мај","Јуни","Јули","Август","Септември","Октомври","Ноември","Декември",],
+                 monthNamesShort:["Јан","Феб","Мар","Апр","Мај","Јун","Јул","Авг","Сеп","Окт","Ное","Дек"],
+                 changeYear:true,
+                 changeMonth:true,
+
+             });
+            var flag=0;
+            var zbir=0;
+            $("#register").click(function () {
+
+                var lozinka=$("#lozinka").val();
+                var ime=$("#ime").val();
+                var email=$("#mail").val();
+                var potvrda=$("#potvrda").val();
+                var date=$("#date").val();
+                if(flag==0) {
+                    flag=1;
+                    if (lozinka.length == 0) {
+                        $("#lozinka").parent().append("<span style='color: red' class='here'>*</span>")
+                    }
+                    if (ime.length == 0) {
+                        $("#ime").parent().append("<span style='color: red' class='here'>*</span>")
+                    }
+                    if (email.length == 0) {
+                        $("#mail").parent().append("<span style='color: red' class='here'>*</span>")
+                    }
+                    if (potvrda.length == 0) {
+                        $("#potvrda").parent().append("<span style='color: red' class='here'>*</span>")
+                    }
+                    if (date.length == 0) {
+                        $("#date").parent().append("<span style='color: red' class='here'>*</span>")
+                    }
+                }
+
+                if (lozinka.length !=0) {
+                    zbir=zbir+10
+                }
+                if (ime.length !=0) {
+                   zbir=zbir+10
+                }
+                if (email.length != 0) {
+                    zbir+=10
+                }
+                if (potvrda.length !=0) {
+                    zbir+=10
+                }
+                if (date.length != 0) {
+                    zbir+=10
+                }
+
+              if($(".checkbox:checked").val()!=0){
+                  zbir=zbir+50
+              }
+              $("#progres").progressbar({
+                  value:zbir,
+              });
+                console.log(zbir)
+            });
+                $(".here").mouseenter(function () {
+                   console.log("AHHA")
+                });
+
+        });
+    </script>
+</head>
+<body>
+    <div id="form">
+        <h1>Регистрација</h1>
+        <div id="general">
+            <p><b>Генерални податоци</b></p>
+            <label><span class="span">Корисничко име</span><input type="text" id="ime"> </label> <br>
+            <label> <span class="span">Е-маил </span><input type="text" id="mail"> </label>  <br>
+            <label><span class="span">Лозинка</span><input type="text" id="lozinka"> </label> <br>
+            <label><span class="span">Потврда на лозинка</span><input type="text" id="potvrda"> </label>  <br>
+
+        </div>
+        <div id="licni">
+            <p><b>Лични податоци</b></p>
+            <label><span class="span">Име</span><input type="text"> </label> <br>
+            <label><span class="span">Презиме </span><input type="text"> </label>  <br>
+            <label><span class="span">Датум</span><input id="date" placeholder=" изберете датум"> </label> <br>
+            <label><span class="span">Пол</span>Машки<input type="radio" class="pol" value="maski"> Женски<input type="radio" class="pol" value="zenski"></label>  <br>
+
+        </div>
+        <div id="tip">
+            <p style="width: 400px"><b>Тип на филм</b></p>
+            <input type="checkbox" class="checkbox" value="Action">Action <br>
+            <input type="checkbox" class="checkbox" value="Animation">Animation<br>
+            <input type="checkbox" class="checkbox" value="Comedy">Comedy<br>
+            <input type="checkbox" class="checkbox" value="Crime">Crime<br>
+            <input type="checkbox" class="checkbox" value="Drama">Drama<br>
+            <input type="checkbox" class="checkbox" value="Fantasy">Fantasy<br>
+            <input type="checkbox" class="checkbox" value="Musical">Musical<br>
+            <input type="checkbox" class="checkbox" value="Romance">Romance<br>
+            <input type="checkbox" class="checkbox" value="Horror">Horror<br>
+            <input type="checkbox" class="checkbox" value="Sci-Fi">Sci-Fi<br>
+            <input type="checkbox" class="checkbox" value="Thriller">Thriller<br>
+        </div>
+              <span id="progres"></span>  <input type="submit" id="register" value="Регистрирај се" style="float: right;margin-right: 35px;height: 30px">
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <style>
+        p{
+
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#namali").click(function () {
+                $("#tekst").css("fontSize","10px")
+            });
+            $("#pocetna").click(function () {
+                $("#tekst").css("fontSize","16px")
+            });
+            $("#zgolemi").click(function () {
+                $("#tekst").css("fontSize","20px")
+            });
+        })
+    </script>
+</head>
+<body>
+<div style="width: 240px;height:50px;padding: 10px 10px 10px    ;background-color: #1c94c4" >
+    Golemina na font:<br>
+    <input type="submit" value="Namali" id="namali"> <input type="submit" value="Pocetna" id="pocetna"> <input type="submit" value="Zgolemi" id="zgolemi">
+</div>
+<div id="tekst">
+    Со кликнување на копчето “Зголеми”, фонтот на текстот треба да се зголеми за <br>
+    фактор (пр. x1.5), а зголемувањето треба да биде анимирано. Аналогно, со кликнување<br>
+    на копчето ,,Намали” фонтот треба да се намалува за истиот фактор. Намалувањето<br>
+    исто така треба да биде анимирано.<br>
+    Со кликнување на копчето ,,Почетна”, големината на фонтот треба да се врати на<br>
+    почетната големина
+</div>
+</body>
+</html>

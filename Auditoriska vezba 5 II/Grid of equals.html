@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            height: 100px;
+            width: 600px;
+            margin: 10px;
+        }
+        .kolona{
+            float: left;
+            height: 70px;
+            width: 100px;
+            margin: 10px;
+            background-color: lightgreen;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"> </script>
+    <script>
+        $(document).ready(function () {
+            $("span").hide();
+            $(".kolona").click(function () {
+                $(this).children("h2").toggle();
+                $(this).children("span").toggle();
+            })
+        })
+    </script>
+</head>
+<body>
+<h1 style="margin: 10px">Grid of equals</h1>
+<div id="prvred" class="red">
+    <div id="pprv" class="kolona"><h2>1</h2><span>Title1</span></div>
+    <div id="pvtor"  class="kolona"><h2>2</h2><span>Title2</span></div>
+    <div id="ptret"  class="kolona"><h2>3</h2><span>Title3</span></div>
+</div>
+<div id="vtorred" class="red">
+    <div id="vprv"  class="kolona"><h2>4</h2><span>Title4</span></div>
+    <div id="vvtor"  class="kolona"><h2>5</h2><span>Title5</span></div>
+    <div id="vtret"  class="kolona"><h2>6</h2><span>Title6</span></div>
+</div>
+
+<div id="tretred" class="red">
+    <div id="tprv"  class="kolona"><h2>7</h2><span>Title7</span></div>
+    <div id="tvtor"  class="kolona"><h2>8</h2><span>Title8</span></div>
+    <div id="ttret"  class="kolona"><h2>9</h2><span>Title9</span></div>
+</div>
+</body>
+</html>

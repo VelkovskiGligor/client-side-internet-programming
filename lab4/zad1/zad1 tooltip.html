@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tooltip</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#ime").tooltip({
+                items:[title],
+                content:function () {
+                    var element=$(this);
+                    if (element.is("[title]")){
+                        return element.attr("title")
+                    }
+                }
+
+            })
+        })
+    </script>
+</head>
+<body>
+<select>
+    <option value="blind">Blind</option>
+    <option value="bounce">Bounce</option>
+    <option value="clip">Clip</option>
+    <option value="drop">Drop</option>
+    <option value="explode">Explode</option>
+    <option value="fade">Fade</option>
+    <option value="fold">Fold</option>
+    <option value="highlight">Highlight</option>
+    <option value="puff">Puff</option>
+    <option value="pulsate">Pulsate</option>
+    <option value="scale">Scale</option>
+    <option value="shake">Shake</option>
+    <option value="size">Size</option>
+    <option value="slide">Slide</option>
+    <option value="transfer">Transfer</option>
+    <option value="myAnimation">My animation</option>
+
+</select>
+<br> <br>
+    <label>Enter name: <br> <input type="text" id="ime" title="Ime"></label>
+</body>
+</html>

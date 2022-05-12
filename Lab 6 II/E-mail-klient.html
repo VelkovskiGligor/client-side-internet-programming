@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            padding: 5px;
+        }
+        .a{
+            width: 350px;
+            border: 1px solid black;
+            height: 400px;
+            padding: 20px;
+        }
+        .a input{
+            margin-bottom: 5px;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var password;
+            var setpassdial=$("#setpassdialog").dialog({
+                autoOpen:true,
+                modal:true,
+                closeOnEscape:false,
+                open: function(event, ui) { $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();},
+                buttons:[{
+                    text:"Ok",
+                    click:function () {
+                        password=$("#pass").val();
+                        password=password+"";
+                        var repas=$("#repass").val();
+                        if(password!= "" && repas!= "" && password==repas && password.length >=6){
+                            var flag=false;
+                            for(var i=0;i<password.length;i++){
+                                var x=password.charAt(i);
+                                if(x=='!' || x=='@'||x=='#'||x=='$'||x=='%'||x=='^'||x=='&'||x=='*'||x=='+'){
+                                    flag=true;
+                                }
+                            }
+                            if(flag){
+                                setpassdial.dialog("close");
+                            }else{
+                                $("#passerror").text("Password error!");
+                            }
+
+                        }else{
+                                $("#passerror").text("Password error!");
+                        }
+                    }
+                }]
+            })
+            var setmessdial=$("#setmessagedialog").dialog({
+                autoOpen:false,
+                buttons:[{
+                    text:"Insert",
+                    click:function () {
+                     var text=$("#text").val();
+                     $("#messpan").text(text);
+                        setmessdial.dialog("close");
+                    }
+                },{
+                    text: "clear",
+                    click:function () {
+                        $("#to").val("");
+                        $("#cc").val("");
+                        $("#subject").val("");
+                        $("#messpan").text("");
+                        $("#text").val("");
+                        setmessdial.dialog("close");
+                    }
+                }]
+            });
+            var sendmessdialog=$("#sendmessdialog").dialog({
+                autoOpen:false,
+                buttons:[{
+                    text:"Ok",
+                    click:function () {
+                        var repass=$("#confpass").val();
+                        if(password==repass){
+                            alert("Message send!");
+                            $("#err").text("");
+                            $("#confpass").val("");
+                            sendmessdialog.dialog("close");
+
+                        }else{
+                            $("#err").text("Password error!")
+                        }
+                    }
+                }]
+            });
+            $("#insert").click(function () {
+
+                setmessdial.dialog("open");
+                $("#appto").text($("#to").val());
+                $("#appsubject").text($("#subject").val());
+                $("#appcc").text($("#cc").val());
+            });
+            $("#send").click(function () {
+                sendmessdialog.dialog("open");
+            })
+        })
+    </script>
+</head>
+<body>
+<div  class="a" id="mess">
+    <h1>New message:</h1>
+    To:<br>
+    <input type="text" id="to" name="mail"><br>
+    Cc:<br>
+    <input type="text" id="cc" name="mail"><br>
+    Subject:<br>
+    <input type="text" id="subject"><br>
+    Content:<br>
+    <span  id="messpan" style="height: 70px;background-color: lightgreen;width: 200px;display: inline-block"></span><br>
+    <input type="submit" id="insert" value="Insert" style="height: 30px;width: 70px;color: white;font-size:18px;background-color: #e78f08">
+    <input type="submit" id="send" style="height: 30px;width: 70px;color: white;background-color: green;font-size: 18px;border-bottom: 3px solid cornflowerblue"value="Send">
+
+</div>
+<div id="setpassdialog" title="Set your password">
+    <span id="passerror" style="color: red"></span><br>
+    New Password:<br>
+    <input type="password" id="pass"><br>
+    Repeat Password:<br>
+    <input type="password" id="repass">
+</div>
+<div id="setmessagedialog" title="Message Content">
+    <strong>To:</strong> <span id="appto"></span> <br>
+    <strong>Subject:</strong> <span id="appsubject"></span> <br>
+        <strong> CC:</strong> <span id="appcc"></span> <br><br>
+            <strong>Content:</strong> <br>
+    <textarea id="text"></textarea>
+</div>
+<div id="sendmessdialog" title="Password">
+    <span style="color: red" id="err"></span><br>
+  <strong>Password:</strong><br>
+    <input type="password" id="confpass">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primer1</title>
+    <style type="text/css">
+        .red{
+            background-color: red;
+        }
+        .blue{
+            color:deepskyblue;
+        }
+
+    </style>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $("#firstlist").addClass("red");
+           $("#secoundlist ul").addClass("blue")
+
+        });
+
+
+    </script>
+</head>
+<body>
+<ol id="firstlist">
+    <li>First element</li>
+    <li>Secound element</li>
+    <li>Third element</li>
+
+</ol>
+
+<ol id="secoundlist">
+    <li>First element, second list</li>
+    <li>Secound element, second list</li>
+    <li>Thired element, second list</li>
+    <ul>
+        <li>Child one</li>
+        <li>Child two</li>
+    </ul>
+
+</ol>
+</body>
+</html>

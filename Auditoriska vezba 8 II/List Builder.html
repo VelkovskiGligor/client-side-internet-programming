@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            display: inline-block;
+            width: 400px;
+        }
+        ul li{
+            height: 25px;
+            list-style-type: none;
+        }
+        input{
+            display: inline-block;
+        }
+        .ui-selectable .ui-widget-content{
+            background-color: white;
+            color: black;
+        }
+        .ui-selectable .ui-selected{
+            background: #eb8f00;
+            color: whitesmoke;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".ui-selectable").selectable();
+            $("#desno").click(function () {
+                var el=$("#secoundlist");
+                $(".ui-selectable .ui-selected").appendTo(el);
+                $(".ui-selectable .ui-selected").removeClass("ui-selected");
+
+
+            });
+            $("#levo").click(function () {
+                var el=$("#firstlist");
+                $(".ui-selectable .ui-selected").appendTo(el);
+                $(".ui-selectable .ui-selected").removeClass("ui-selected");
+            });
+
+        });
+    </script>
+</head>
+<body>
+<ul id="firstlist" class="ui-selectable">
+    <li class="ui-widget-content">Item 1</li>
+    <li class="ui-widget-content">Item 2</li>
+    <li class="ui-widget-content">Item 3</li>
+    <li class="ui-widget-content">Item 4</li>
+    <li class="ui-widget-content">Item 5</li>
+    <li class="ui-widget-content">Item 6</li>
+    <li class="ui-widget-content">Item 7</li>
+    <li class="ui-widget-content">Item 8</li>
+</ul>
+<input type="submit" value=">" id="desno">  <input type="submit" value="<" id="levo">
+<ul id="secoundlist" class="ui-selectable">
+</ul>
+</body>
+</html>

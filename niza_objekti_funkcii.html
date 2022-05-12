@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" language="JavaScript1.5">
+        var niza=["name","GLigoije","Mrtin"];
+        console.log(niza[1]);
+        var car=new Object();
+        car.name="Mustang";
+        car.color="Black";
+        console.log(car);
+        //konstruktor funkcija
+        function  vozilo(name,color,yars){
+            this.name=name;
+            this.color=color;
+            this.yars=yars;
+             function getName(){//nejke neso
+                return name;
+            }
+        }
+        var Mycar=new vozilo("Mustang","black",2020);
+        console.log(Mycar.color)
+        var broevi=[1,2,3,4,5];
+        broevi.push(6);
+        var obratno=broevi.reverse();
+        console.log("Broevi: "+obratno);
+        obratno.pop(0);
+        console.log("Izbrisan: "+obratno);
+        console.log(broevi.length)
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

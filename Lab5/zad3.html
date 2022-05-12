@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selected list</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style type="text/css">
+        div{
+            margin: 50px;
+        }
+        input{
+            margin-top:10px;
+        }
+        li{
+            cursor: pointer;
+            width: 300px;
+
+        }
+        #select  .ui-selectee{
+            background-color: white;
+            color: black;
+
+        }
+        #select .ui-selected{
+            background-color: forestgreen;
+            color: white;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#select").selectable();
+                $("#delete").click(function () {
+                    $(".ui-selected").remove();
+                    $("#item").val("");
+                });
+
+            $("#add").click(function () {
+                tekst=$("#item").val();
+                $("#select").append("<li   class='ui-widget-content'>"+tekst+"</li>")
+                $("#item").val("");
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+<div>
+    New items:<br>
+    <input type="text" id="item"><br>
+    <input type="submit" value="Add new item" id="add"> <input type="submit" value="Delete Selected item" id="delete">
+</div>
+
+    <ul id="select">
+
+
+    </ul>
+
+
+</body>
+</html>

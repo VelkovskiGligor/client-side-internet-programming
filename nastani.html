@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nastani</title>
+<script type="text/javascript" language="JavaScript1.5">
+    var i=0;
+    function f() {
+    i++
+        if( i%2==0){
+    document.getElementById("kocka").style.backgroundColor="black";
+            }
+        else {
+            document.getElementById("kocka").style.backgroundColor="red";
+            document.getElementById("hidden").hidden;
+        }
+
+        document.append("<p>New Paragraph<p>")
+    }
+
+</script>
+</head>
+<body>
+<p id="kocka" style="background-color:red;height: 300px;width: 300px" onclick="f()"></p>
+<h1 id="hidden" >Hidden!</h1>
+</body>
+</html>

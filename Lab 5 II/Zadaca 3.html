@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            padding: 10px;
+        }
+        input{
+            margin: 5px;
+        }
+        ul{
+            list-style-type: none;
+            width: 400px;
+        }
+        ul li{
+            height: 30px;
+            padding-top: 10px;
+            padding-left: 10px;
+            font-size: 20px;
+
+        }
+        .ui-selectable  ui-widget-content{
+            background-color: white;
+            color: black;
+        }
+        .ui-selectable .ui-selected{
+            background: darkseagreen;
+            color: white;
+        }
+        #tt{
+            background: darkseagreen;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            width: 400px;
+        }
+
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".ui-selectable").selectable();
+            $(".ui-selectable li").mousedown(function () {
+                $("#selektirani").text("");
+                $(".ui-selectable .ui-selected").each(function () {
+                    $("#selektirani").append($(this).text()+" ");
+                })
+            });
+            $("#delete").click(function () {
+               $(".ui-selectable .ui-selected").remove();
+                $("#selektirani").text("");
+            })
+            $("#add").click(function () {
+                var vrednos=$("#tekst").val();
+                $(".ui-selectable").append("<li class='ui-widget-content'>"+vrednos+"</li>")
+            })
+        })
+    </script>
+</head>
+<body>
+    New Item:<br>
+    <input id="tekst" type="text"><br>
+<input type="submit" id="add" value="Add new Item"><input type="submit" id="delete" value="Delete Selected Item"><br>
+    <div id="tt">Selected items: <span id="selektirani"></span></div>
+<ul class="ui-selectable">
+    <li class="ui-widget-content">Item 1</li>
+    <li class="ui-widget-content">Item 2</li>
+    <li class="ui-widget-content">Item 3</li>
+    <li class="ui-widget-content">Item 4</li>
+    <li class="ui-widget-content">Item 5</li>
+
+</ul>
+</body>
+</html>

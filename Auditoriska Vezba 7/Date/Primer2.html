@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date2</title>
+    <script type="text/javascript" src="../../jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../../jquery/jquery-ui.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#date").datepicker({
+                appendText:"dd mm yy",  //do input poleto go dodava tekstot
+                dateFormat:"dd mm yy", //go prikazuva vo format  dd/mm/yy     POVAZNO!
+                showAnim:"fold",//se otvara vo vid na slideshow
+                duration:'slow',    //otvaranjeto e bavno
+            })
+        })
+    </script>
+</head>
+<body>
+<p>Enter date</p> <input id="date" placeholder="Click to pick data">
+</body>
+</html>

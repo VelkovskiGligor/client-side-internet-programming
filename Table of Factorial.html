@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" language="JavaScript1.5">
+
+        var el=document.getElementById("p")
+        for (var i=0;i<10;i++){
+            el.writeln(i+"!=")
+
+
+        }
+    </script>
+</head>
+<body>
+<h1>Table of Factorials</h1>
+<p id="p"></p>
+<script type="text/javascript" language="JavaScript1.5">
+
+    var el=document.getElementById("p");
+    document.write("<h2>Table of Factorials</h2>");
+
+    for (var i=1;i<10;i++){
+        var vk=1;
+        for (var j=1;j<=i;j++){
+            vk=vk*j;
+        }
+        document.writeln(i+"!="+vk+"<br>");
+
+
+    }
+</script>
+</body>
+</html>

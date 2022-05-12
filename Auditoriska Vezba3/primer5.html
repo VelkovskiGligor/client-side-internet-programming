@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("li").not(":has(ul)").css("border", "1px solid black");
+        //go zima sekoj li sto nema dete ul;site li osven toj sto ima dete ul
+        });
+    </script>
+</head>
+<body>
+<ol id="firstlist">
+    <li>First element</li>
+    <li>Secound element</li>
+    <li>Third element</li>
+
+</ol>
+
+<ol id="secoundlist">
+    <li>First element, second list</li>
+    <li>Secound element, second list</li>
+    <li>Thired element, second list
+          <ul>
+             <li>Child one</li>
+              <li>Child two</li>
+         </ul>
+    </li>
+</ol>
+</body>
+</html>

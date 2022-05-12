@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            border: 1px solid black;
+        }
+        thead,td,th{
+            border:1px solid black ;
+            text-align: center;
+        }
+        th{
+            width: 200px;
+            height: 30px;
+        }
+        label span{
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var dial=$("#dialog").dialog({
+                autoOpen:false,
+                buttons:[{
+                    text:"Add",
+                    click:function () {
+                        var title=$("#title").val();
+                        var avtor=$("#author").val();
+                        var comm=$("#commentar").val();
+                        $("tbody").append("<tr>");
+                        $("tbody").append("<td>"+title+"</td>");
+                        $("tbody").append("<td>"+avtor+"</td>");
+                        $("tbody").append("<td>"+comm+"</td>");
+                        $("tbody").append("</tr>");
+                        $("#title").val("");
+                        $("#author").val("");
+                        $("#commentar").val("");
+                        dial.dialog("close")
+                    }
+                },{
+                    text:"Close",
+                    click:function () {
+                        $("#title").val("");
+                        $("#author").val("");
+                        $("#commentar").val("");
+                        dial.dialog("close")
+                    }
+
+                }]
+            });
+            $("#button").click(function () {
+                dial.dialog("open")
+            })
+
+        })
+    </script>
+</head>
+<body>
+<input type="submit" id="button" alue="Add Book"><br><br>
+
+<table>
+    <thead>
+        <th>Title</th><th>Author</th><th>Commentar</th>
+    </thead>
+    <tbody id="body">
+
+    </tbody>
+</table>
+<div id="dialog" title="Add a Book">
+    <label><span>Title: </span><input type="text" id="title"></label><br>
+    <label><span>Author: </span><input type="text" id="author"></label><br>
+    <label><span>Commentar: </span><input type="text" id="commentar"></label><br>
+</div>
+</body>
+</html>

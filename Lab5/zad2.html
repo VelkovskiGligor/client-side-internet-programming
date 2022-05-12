@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appl</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style type="text/css">
+       div label span{
+           width: 100px;
+         margin-right: 10px;
+           display: inline-block;
+
+
+        }
+        div label input{
+
+            margin-left: 20px;
+        }
+        div label{
+           margin:40px;
+        }
+        ul li{
+            width: 300px;
+        }
+         .ui-selectee{
+             background-color: white;
+
+        }
+        .ui-selected{
+            background-color: #eb8f00;
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dialog").hide();
+            $("ul").selectable();
+           $("#date").datepicker({
+               dateFormat:"D M yy",
+               changeMonth:true,
+               changeYear:true,
+           });
+
+            $("#add").click(function(){
+                var flag=1;
+                var name=$("#name").val();
+                var surname=$("#surname").val();
+                var password=$("#password").val();
+                var date=$("#date").val();
+                var aktivnosti=$(".ui-selected").text();
+                console.log(aktivnosti);
+                if(name==""){
+                    flag=0;
+                    $("#name").css("border","solid 2px red");
+                    $("#name").parent().append("<span style='color: red'>Insert a name</span>");
+                }
+                if(surname==""){
+                    flag=0;
+                    $("#surname").css("border","solid 2px red");
+                    $("#surname").parent().append("<span style='color: red'>Insert a surname</span>");
+                }
+                if(password==""){
+                    flag=0;
+                    $("#password").css("border","solid 2px red");
+                    $("#password").parent().append("<span style='color: red'>Insert a Password</span>");
+                }
+                if(date==""){
+                    flag=0;
+                    $("#date").css("border","solid 2px red");
+                    $("#date").parent().append("<span style='color: red'>Select date</span>");
+                }
+                if(flag==1){
+                    $("#dialog p").eq(0).append(name);
+                    $("#dialog p").eq(1).append(surname);
+                    $("#dialog p").eq(2).append(password);
+                    $("#dialog p").eq(3).append(date);
+                    $("#dialog p").eq(4).append(aktivnosti);
+                    $("#dialog").show();
+                    var dial=$("#dialog").dialog({
+                        autoOpen:false,
+                        modal:true,
+                        text:"User info"
+                    });
+                    dial.dialog('open');
+                }
+
+            })
+        });
+
+
+    </script>
+</head>
+<body>
+<div>
+    <label> <span>Name:</span><input id="name" placeholder="Enter your name"> </label><br>
+    <label> <span>Surname:</span><input id="surname" placeholder="Enter your surname"></label><br>
+    <label> <span>Password:</span><input id="password" type="password" placeholder="Enter Password"></label><br>
+    <label> <span>Date of Birth:</span><input id="date" placeholder="Click to pick date!"></label><br>
+
+<ul class="select">
+    <li class="ui-widget-content">Gaming </li>
+    <li class="ui-widget-content">Sport </li>
+    <li class="ui-widget-content" >Watching TV </li>
+    <li class="ui-widget-content">Sleeping </li>
+    <li class="ui-widget-content" >Hiking </li>
+    <li class="ui-widget-content" >Dancing </li>
+</ul>
+    <input type="submit" value="Add my info" id="add">
+
+</div>
+<div id="dialog" title="User info">
+    <p>Name:</p>
+    <p>Surname:</p>
+    <p>Password:</p>
+    <p>Date of birth:</p>
+    <p>Hobbies:</p>
+</div>
+</body>
+</html>

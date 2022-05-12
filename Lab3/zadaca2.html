@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca 2</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <style type="text/css">
+        #cekor1{
+            width: 600px;
+            height: 400px;
+            border: 1px black solid;
+        }
+       #naslovi ul li{
+            display: inline-block;
+            margin-top: 5px;
+            margin-left: 10px;
+            font-size: 20px;
+            color:blue;
+           padding: 5px;
+           height: 40px;
+           border-right: 1px solid dodgerblue;
+        }
+        #naslovi ul li:last-child{
+            border-right: 0;
+        }
+        #naslovi{
+            background-color: lightgray;
+            width: 600px;
+            height: 50px;
+            border-bottom: 3px solid #8c99a4;
+        }
+        #izbor{
+            background-color: #8c99a4;
+            width: 600px;
+            height: 150px;
+        }
+        #izbor ul{
+            display: inline-block;
+            float: left;
+            margin-right: 20px;
+            height: 100px;
+
+        }
+        #izbor ul:last-child{
+            display: inline-block;
+            float: left;
+            margin-left: 20px;
+            height: 100px;
+
+        }
+        #izbor ul li {
+            text-decoration: none;
+            color: #283744;
+            cursor: grab;
+            font-size: 17px;
+
+
+        }
+        #podatoci  div{
+            background-color: #8c99a4;
+            border: 2px solid #283744;
+            width: 600px;
+            height: 50px;
+            margin-top: 10px;
+
+        }
+        #accordation{
+            float: right;
+            width: 200px;
+            height: 20px;
+        }
+
+
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $("#podatoci div").each(function () {
+               $(this).hide();
+           });
+            $("li").click(function () {
+                $("#podatoci div").each(function () {
+                    $(this).hide();
+                });
+                var klasa=this.getAttribute("class");
+                klasa="."+klasa;
+                $(klasa).eq(1).show();
+            });
+            $("#izbor li").hover(function () {
+                $(this).css("color","dodgerblue")
+            },function () {
+                $(this).css("color","black")
+            });
+            $("#accordation").accordion({
+                collapse:true,
+                active:true,
+            });
+            $("#accordation h2").click(function () {
+                $(this).next().slideToggle();
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="cekor1">
+    <div id="sekcii">
+        <div id="naslovi">
+            <ul>
+                <li>Медицина</li>
+                <li>Образование</li>
+                <li>Сметководство</li>
+                <li>Игри</li>
+            </ul>
+        </div>
+        <div id="izbor">
+            <ul>
+                <li class="MedIm">MedIm</li>
+                <li class="MedIA">MedIA</li>
+                <li class="FINKI-Med">FINKI-Med</li>
+            </ul>
+            <ul>
+                <li class="FINKI-Edu">FINKI-Edu </li>
+                <li class="Edu-Buddy">Edu-Buddy</li>
+                <li class="FINKI-LE">FINKI-LE</li>
+                <li class="FINKI-Math">FINKI-Math</li>
+            </ul>
+            <ul>
+                <li class="eTax">eTax</li>
+                <li class="Tax">FINKI-Tax</li>
+                <li class=Tax-All>Tax-All</li>
+                <li>mySalary</li>
+            </ul>
+            <ul>
+                <li>FINKI-game</li>
+                <li>Grelima</li>
+                <li>Edaolith</li>
+                <li>Foessa</li>
+                <li>Jeroen</li>
+            </ul>
+        </div>
+
+
+
+    </div>
+    <div id="podatoci">
+        <div class="MedIm">Медицина-MedIm</div>
+        <div class="MedIA">Медицина-MedIA</div>
+        <div class="FINKI-Med">Медицина-FINKI-Med</div>
+        <div class="FINKI-Edu">Образование-FINKI-Edu</div>
+        <div class="Edu-Buddy">Образование-Edu-Buddy</div>
+        <div class="FINKI-LE">Образование-FINKI-LE</div>
+        <div class="FINKI-Math">Образование-FINKI-Math</div>
+        <div class="eTax">eTax-информации</div>
+        <div class="Tax">Tax-информации </div>
+        <div class="Tax-All">Tax-All-info</div>
+    </div>
+
+</div>
+
+
+<div id="accordation">
+
+        <h2 class="ui-accordion-header">Тим</h2>
+        <div>
+
+                Алберт Ајнштајн<br>
+                Ален Тјуринг<br>
+                Архимед<br>
+
+        </div>
+
+
+        <h2 class="ui-accordion-header">Претставништва</h2>
+        <div>
+            Скопје<br>
+            Прилеп<br>
+            Велес<br>
+
+        </div>
+
+
+        <h2 class="ui-accordion-header">Контакт</h2>
+        <div>
+            Ул. Есенска 24/5 1000 Скопје<br>
+            +38921234567<br>
+            finkiit@iaispit.com<br>
+        </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" language="JavaScript1.5">
+        var i=0
+        function change() {
+            var slika=document.getElementById("img");
+            console.log(slika)
+           if(slika.getAttribute("src")=="pic_bulboff.gif"){
+               slika.src="pic_bulbon.gif"
+           }
+           else{
+               slika.src="pic_bulboff.gif"
+           }
+        }
+        function onn() {
+            var slika=document.getElementById("img");
+            slika.src="pic_bulbon.gif"
+        }
+        function off() {
+            var slika=document.getElementById("img");
+            slika.src="pic_bulboff.gif"
+        }
+
+    </script>
+</head>
+<body>
+<img id="img" src="pic_bulboff.gif" height="400px" width="300px" onclick="change()">
+</body>
+</html>

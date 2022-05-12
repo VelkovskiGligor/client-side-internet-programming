@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>zad</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style type="text/css">
+        #id{
+            margin-left: 5px;
+        }
+        #add{
+            margin-left: 130px;
+            height: 25px;
+            width: 100px;
+        }
+
+        #sociallista li{
+            height: 60px;
+            width: 70px;
+            display: inline-block;
+        }
+        .delicious{
+            background-image: url("./images/delicious.png");
+            background-repeat: no-repeat;
+        }
+        .digg{
+            background-image: url("./images/digg.png");
+            background-repeat: no-repeat;
+        }
+        .facebook{
+            background-image: url("./images/facebook.png");
+            background-repeat: no-repeat;
+        }
+        .flickr{
+            background-image: url("./images/flickr.png");
+            background-repeat: no-repeat;
+        }
+        .linkedin{
+            background-image: url("./images/linkedin.png");
+            background-repeat: no-repeat;
+        }
+        .redit{
+            background-image: url("./images/reddit.png");
+            background-repeat: no-repeat;
+        }
+        .rss{
+            background-image: url("./images/rss.png");
+            background-repeat: no-repeat;
+        }
+        .twitter{
+            background-image: url("./images/twitter.png");
+            background-repeat: no-repeat;
+        }
+        .zabledeni{
+            opacity: 50%;
+        }
+        .momentalno{
+            opacity: 1;
+            zoom: 140%;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sociallista li").hover(function () {
+                $("#sociallista li").addClass("zabledeni");
+
+                $(this).removeClass("zabledeni");
+                $(this).addClass("momentalno");
+
+            },function () {
+                $("#sociallista li").removeClass("zabledeni");
+                $("#sociallista li").removeClass("momentalno");
+            });
+            var broj;
+           $(document).tooltip({
+              items:"[title]",
+               content:function () {
+                   return $(this).attr("title");
+               }
+           });
+           $("#add").click(function () {
+               broj=$("#id").val();
+              if ( broj.length != 10 && broj.length!=13) {
+                  alert("Vnesete broj od 11 do 13 cifri!");
+              }
+                  broj=parseInt(broj);
+                  if(isNaN(broj)) {
+                      alert("Vnesete broj od 11 do 13 cifri!");
+                      return;
+                  }
+               $.ajax({
+                   url:"https://openlibrary.org/api/books?bibkeys=ISBN:"+broj+"&jscmd=details&callback=mycallback",
+                    dataType:"jsonp",
+                   success:function (mycallback) {
+                       $.each(mycallback,function (i,items) {
+                           var url=items.info_url;
+                          var title=url.split("/");
+                           title=title[title.length-1];
+                           console.log(title)
+                           $("#lista").append("<li class='a'><strong>"+title+"</strong></li>");
+                           $(".a").click(function () {
+                               $(this).append("<br>: isbn_13:"+items.isbn_13+"<br> <img src='"+items.thumbnail_url+"' width='150px' height='200px'>");
+                               $(this).append("<br>info_url: <a href='"+items.info_url+"'>items.info_url</a><br>publishers"+items.publishers)
+                           })
+                       });
+
+
+
+
+
+                   }
+               })
+           });
+
+        });
+    </script>
+
+</head>
+<body>
+<label>
+    <strong>ISBN: <input type="text" id="id" title="Vnesete  11 ili 13 brojki"></strong><br>
+<input type="submit" value="Add book" id="add">
+</label>
+<ul id="lista" style="width: 400px">
+
+</ul>
+<div id="social">
+            <ul id="sociallista" >
+                <li class="facebook"></li>
+                <li class="delicious"></li>
+                <li class="digg"></li>
+                <li class="flickr"></li>
+                <li class="linkedin"></li>
+                <li class="redit"></li>
+                <li class="rss"></li>
+                <li class="twitter"></li>
+            </ul>
+</div>
+</body>
+</html>

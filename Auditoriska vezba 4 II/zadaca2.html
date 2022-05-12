@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            display: block;
+           margin: 5px;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery/jquery.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../jquery/jquery-ui.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var dialog=$("#dialog").dialog({
+                autoOpen:false,
+                buttons:[{
+                    text:"Proceed",
+                    click:function () {
+                        var ime=$("#ime").val();
+                        var prezime=$("#prezime").val();
+                        if( ime== "" || prezime== ""){
+                            alert("Zadolzitelno vnesete ime i prezime")
+                        }else{
+                            $("#rezz").val(ime+" "+ prezime);
+                            dialog.dialog('close');
+                        }
+                    }
+                }]
+            });
+            $("#click").click(function () {
+                dialog.dialog('open');
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="text"  id="rezz" style="width: 200px;" disabled>
+<input type="submit" id="click" value="Get data!">
+<div id="dialog" title="Enter your date">
+    <label><span>Name</span><input type="text" id="ime"></label><br>
+    <label><span>Surname</span><input type="text" id="prezime"></label>
+
+</div>
+</body>
+</html>

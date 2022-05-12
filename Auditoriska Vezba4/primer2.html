@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primer2</title>
+    <script type="text/javascript" src="jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="jquery/jquery-ui.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+         var dial=   $( "#dialog" ).dialog({
+                autoOpen: false,
+                modal: true,
+                buttons: [{
+                    text:"Get data",
+                    click: function(){
+                        $("#tekst").val($("#vnesi").val());
+                        //validation here
+                        dial.dialog("close");
+                    }
+                }]
+            });
+
+            $("#click").click(function(){
+                dial.dialog("open");
+            });
+        });
+
+    </script>
+</head>
+<body>
+<input type="submit" value="Get data!" id="click"><br>
+<input type="text" disabled id="tekst" >
+
+<div id="dialog" title="Simple">
+    <p>Enter your name and subname</p>
+    <input type="text" id="vnesi">
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid of equals</title>
+    <style type="text/css">
+        .block{
+            display: inline-block;
+            float: left;
+            margin: 10px;
+            width: 75px;
+            height: 75px;
+            background-color: darkseagreen;
+            padding: 10px;
+        }
+        .row{
+            float: left;
+            width: 500px;
+            clear: both;
+        }
+        div span{
+            display: none;
+        }
+        .block div h1{
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+               $(".row div").hover(function () {
+                   $(this).find("h1").toggle();
+                   $(this).find("span").toggle();
+               },function () {
+                   $(this).find("h1").toggle();
+                   $(this).find("span").toggle();
+               })
+            });
+    </script>
+</head>
+<body>
+<h1>Grid of equals</h1>
+<div id="glavan">
+    <div class="row">
+        <div class="block"><span>TITLE 1</span><h1>1</h1></div>
+        <div class="block"><h1>2</h1><span>TITLE 2</span></div>
+        <div class="block"><h1>3</h1><span>TITLE 3</span></div>
+    </div>
+    <div class="row">
+         <div class="block"><h1>4</h1><span>TITLE 4</span></div>
+        <div class="block"><h1>5</h1><span>TITLE 5</span></div>
+        <div class="block"><h1>6</h1><span>TITLE 6</span></div>
+    </div>
+    <div class="row">
+        <div class="block"><h1>7</h1><span>TITLE 7</span></div>
+        <div class="block"><h1>8</h1><span>TITLE 8</span></div>
+        <div class="block"><h1>9</h1><span>TITLE 9</span></div>
+    </div>
+
+</div>
+</body>
+</html>
